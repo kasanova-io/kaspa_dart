@@ -259,19 +259,22 @@ int _polymod32(List<int> data) {
   return c0 * (1 << 30) * 4 + c1;
 }
 
-int _polymod(List<int> values) {
-  var chk = 1;
-  values.forEach((v) {
-    var top = chk >>> 35;
-    chk = ((chk & 0x07ffffffff) << 5) ^ v;
-    for (int i = 0; i < generator.length; i++) {
-      if ((top >>> i) & 1 == 1) {
-        chk ^= generator[i];
+BigInt _polymod(List<int> values) {
+  // Kaspa uses a 40-bit checksum. Dart's JavaScript int bitwise operations
+  // truncate to 32 bits, so retain the accumulator as BigInt on every target.
+  var chk = BigInt.one;
+  final mask = BigInt.from(0x07ffffffff);
+  final generators = generator.map(BigInt.from).toList();
+  for (final v in values) {
+    final top = chk >> 35;
+    chk = ((chk & mask) << 5) ^ BigInt.from(v);
+    for (var i = 0; i < generators.length; i++) {
+      if (((top >> i) & BigInt.one) == BigInt.one) {
+        chk ^= generators[i];
       }
     }
-  });
-
-  return chk ^ 1;
+  }
+  return chk ^ BigInt.one;
 }
 
 List<int> _hrpExpand(String hrp) {
@@ -281,18 +284,18 @@ List<int> _hrpExpand(String hrp) {
 }
 
 bool _verifyChecksum(String hrp, List<int> dataIncludingChecksum) {
-  return _polymod(_hrpExpand(hrp) + [0] + dataIncludingChecksum) == 0;
+  return _polymod(_hrpExpand(hrp) + [0] + dataIncludingChecksum) == BigInt.zero;
 }
 
 List<int> _createChecksum(String hrp, List<int> data) {
   var values = _hrpExpand(hrp) + [0] + data + [0, 0, 0, 0, 0, 0, 0, 0];
   var polymod = _polymod(values);
-  //kIsWeb ? _polymod32(values) : _polymod(values);
 
   var result = <int>[0, 0, 0, 0, 0, 0, 0, 0];
 
   for (var i = 0; i < result.length; i++) {
-    result[i] = (polymod >>> (5 * (result.length - 1 - i))) & 31;
+    result[i] = ((polymod >> (5 * (result.length - 1 - i))) & BigInt.from(31))
+        .toInt();
   }
   return result;
 }
