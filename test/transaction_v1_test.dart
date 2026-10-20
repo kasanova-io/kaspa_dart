@@ -47,9 +47,15 @@ TransactionV1 readCase(Map value) {
 
 void main() {
   final cases = (jsonDecode(v1SigningFixture) as Map)['cases'] as List;
-  for (final c in cases) {
+  for (final c in cases.where((c) => c['transaction']['version'] == 1)) {
     test('node v1 signature vectors: ${c['name']}', () {
       final tx = readCase(c);
+      expect(tx.id, c['transaction']['id']);
+      final rpc = tx.toRpcJson(storageMass: BigInt.zero);
+      for (var i = 0; i < tx.outputs.length; i++) {
+        expect(rpc['outputs'][i]['scriptPublicKey'],
+            c['transaction']['outputs'][i]['rpcScriptPublicKey']);
+      }
       for (final input in c['expected']) {
         for (final expected in input['hashes']) {
           final index = input['inputIndex'] as int,
@@ -62,6 +68,40 @@ void main() {
       }
     });
   }
+
+  test('filling witnesses retains the exact transaction and RPC budget variant',
+      () {
+    final tx = readCase(cases.first);
+    final scripts = [
+      [1, 2],
+      [3, 4]
+    ];
+    final signed = tx.withSignatureScripts(scripts);
+    scripts[0][0] = 9;
+    expect(signed.inputs.first.signatureScript, [1, 2]);
+    expect(tx.inputs.first.signatureScript, isEmpty);
+    expect(signed.id, tx.id);
+    expect(signed.signatureHashSchnorr(0), tx.signatureHashSchnorr(0));
+    expect(signed.outputs, tx.outputs);
+    final rpc =
+        signed.toRpcJson(storageMass: BigInt.parse('18446744073709551615'));
+    expect(rpc['mass'], BigInt.parse('18446744073709551615'));
+    expect(rpc['inputs'][0]['sigOpCount'], 0);
+    expect(rpc['inputs'][0]['computeBudget'], tx.inputs.first.computeBudget);
+    expect(rpc['inputs'][0]['signatureScript'], '0102');
+    expect(rpc['inputs'][0]['sequence'], tx.inputs.first.sequence);
+    expect(rpc['outputs'][0]['covenant']['authorizingInput'], 0);
+    expect(rpc['outputs'][0]['value'], tx.outputs.first.value);
+    expect(
+        () => tx.withSignatureScripts([
+              [1]
+            ]),
+        throwsFormatException);
+    expect(() => tx.toRpcJson(storageMass: BigInt.one << 64),
+        throwsFormatException);
+    rpc['inputs'][0]['computeBudget'] = 2;
+    expect(signed.inputs.first.computeBudget, 65535);
+  });
 
   test('reviewed signing data owns its bytes and rejects direct mutation', () {
     final tx = readCase(cases.first);
@@ -84,6 +124,22 @@ void main() {
     script[0] = 9;
     expect(owned.script, [1, 2, 3]);
     expect(hex.encode(tx.signatureHashSchnorr(0)), before);
+  });
+
+  test('read-only identities reject legacy and unrecognized future versions',
+      () {
+    final tx = readCase(cases.first);
+    for (final version in [0, 2]) {
+      final identity = TransactionIdentityV1(
+          version: version,
+          inputs: tx.identity.inputs,
+          outputs: tx.outputs,
+          lockTime: tx.lockTime,
+          subnetworkId: tx.subnetworkId,
+          gas: tx.gas,
+          payload: tx.payload);
+      expect(() => identity.id, throwsFormatException);
+    }
   });
 
   test('invalid hash modes and input indices cannot silently authorize', () {

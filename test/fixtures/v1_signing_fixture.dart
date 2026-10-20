@@ -77,11 +77,13 @@ const v1SigningFixture = r'''{
       "name": "base",
       "transaction": {
         "gas": "0",
+        "id": "c11fa2ffeb0f8ada2bd987097e57d643f138246eb4aa17677cf150425c629268",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -89,6 +91,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -100,12 +103,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -206,11 +211,13 @@ const v1SigningFixture = r'''{
       "name": "binding-id",
       "transaction": {
         "gas": "0",
+        "id": "3fc83c1658fadabe35665d504599c20b12e786bc35da9210d68513182c9e6829",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -218,6 +225,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -229,12 +237,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "bcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbc"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -335,11 +345,13 @@ const v1SigningFixture = r'''{
       "name": "authorizing-input",
       "transaction": {
         "gas": "0",
+        "id": "d68fb8ad496281023fb9f5cc39a459c046f4af4c47c7b3d23196bd2a31e1cabf",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -347,6 +359,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -358,12 +371,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 1,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -464,11 +479,13 @@ const v1SigningFixture = r'''{
       "name": "no-binding",
       "transaction": {
         "gas": "0",
+        "id": "e854ba1b4215dd46e91a1c4ba46370df0c05cbffebe2f079700abcf9f0ad73e4",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -476,6 +493,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -484,12 +502,14 @@ const v1SigningFixture = r'''{
         "outputs": [
           {
             "covenant": null,
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -590,11 +610,13 @@ const v1SigningFixture = r'''{
       "name": "sequence",
       "transaction": {
         "gas": "0",
+        "id": "a866bfda89304f48f067930c6e27eb6837b8db37a0690da6ed6416748095301e",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -602,6 +624,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "43",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -613,12 +636,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -719,11 +744,13 @@ const v1SigningFixture = r'''{
       "name": "outpoint",
       "transaction": {
         "gas": "0",
+        "id": "23918fd89da3053e0bd797efe304ae3c2877297442241f306d7d7e9ad61dd081",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 7,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -731,6 +758,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -742,12 +770,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -848,11 +878,13 @@ const v1SigningFixture = r'''{
       "name": "output-value",
       "transaction": {
         "gas": "0",
+        "id": "10cef7fcbb2273954cd4fefeed260e4a8d809a9850305cb5f3c5398d29b1a979",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -860,6 +892,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -871,12 +904,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "18"
@@ -977,11 +1012,13 @@ const v1SigningFixture = r'''{
       "name": "max-output-value",
       "transaction": {
         "gas": "0",
+        "id": "99c5aa9ab71f44b4948f02417dfea4e35d4c8b30e84cd4eca417bf60ce9c6be0",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -989,6 +1026,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -1000,12 +1038,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "18446744073709551615"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -1106,11 +1146,13 @@ const v1SigningFixture = r'''{
       "name": "utxo-amount",
       "transaction": {
         "gas": "0",
+        "id": "c11fa2ffeb0f8ada2bd987097e57d643f138246eb4aa17677cf150425c629268",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -1118,6 +1160,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -1129,12 +1172,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -1235,11 +1280,13 @@ const v1SigningFixture = r'''{
       "name": "utxo-script",
       "transaction": {
         "gas": "0",
+        "id": "c11fa2ffeb0f8ada2bd987097e57d643f138246eb4aa17677cf150425c629268",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -1247,6 +1294,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -1258,12 +1306,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -1364,11 +1414,13 @@ const v1SigningFixture = r'''{
       "name": "utxo-script-version",
       "transaction": {
         "gas": "0",
+        "id": "c11fa2ffeb0f8ada2bd987097e57d643f138246eb4aa17677cf150425c629268",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -1376,6 +1428,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -1387,12 +1440,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -1493,11 +1548,13 @@ const v1SigningFixture = r'''{
       "name": "payload",
       "transaction": {
         "gas": "0",
+        "id": "981b85c3ef58ee14bdfbb5998e384d358051d6532bb351b1e8cce227ea85c65a",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -1505,6 +1562,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -1516,12 +1574,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -1622,11 +1682,13 @@ const v1SigningFixture = r'''{
       "name": "gas",
       "transaction": {
         "gas": "18446744073709551615",
+        "id": "2f4bb2534fe1c9f93beb56f344cdc41265b9fe7f2b15cd18523cc45f597bc6ed",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -1634,6 +1696,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -1645,12 +1708,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -1751,11 +1816,13 @@ const v1SigningFixture = r'''{
       "name": "single-missing-output",
       "transaction": {
         "gas": "0",
+        "id": "71edae2511a48a1020117eeb7a6dab81b562cd301ce33f78efcb55e5406b2496",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -1763,6 +1830,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -1774,6 +1842,7 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
@@ -1874,11 +1943,13 @@ const v1SigningFixture = r'''{
       "name": "unsigned-budgets-and-scripts",
       "transaction": {
         "gas": "0",
+        "id": "c11fa2ffeb0f8ada2bd987097e57d643f138246eb4aa17677cf150425c629268",
         "inputs": [
           {
             "computeBudget": 1,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "51",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -1886,6 +1957,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -1897,12 +1969,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -2003,11 +2077,13 @@ const v1SigningFixture = r'''{
       "name": "non-native-empty-payload",
       "transaction": {
         "gas": "0",
+        "id": "5cbb904609774305667d0c5c0849f8f53ff894f84183709f68a8a530f009f900",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -2015,6 +2091,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -2026,12 +2103,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -2132,11 +2211,13 @@ const v1SigningFixture = r'''{
       "name": "non-native-with-payload",
       "transaction": {
         "gas": "0",
+        "id": "266940b0a4cbbb97894d0de6153ab510f8fb9260f1b5e39845902e015412b5bb",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -2144,6 +2225,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -2155,12 +2237,14 @@ const v1SigningFixture = r'''{
               "authorizingInput": 0,
               "covenantId": "abababababababababababababababababababababababababababababababab"
             },
+            "rpcScriptPublicKey": "0000aa20ab87",
             "script": "aa20ab87",
             "scriptVersion": 0,
             "value": "9007199254740993"
           },
           {
             "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
             "script": "20cdac",
             "scriptVersion": 0,
             "value": "17"
@@ -2261,11 +2345,13 @@ const v1SigningFixture = r'''{
       "name": "all-with-no-outputs",
       "transaction": {
         "gas": "0",
+        "id": "60118b5e2c19964978ed595be49b9b8013425e6a4425133c3ce56d18a178222e",
         "inputs": [
           {
             "computeBudget": 65535,
             "index": 0,
             "sequence": "18446744073709551615",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
           },
@@ -2273,6 +2359,7 @@ const v1SigningFixture = r'''{
             "computeBudget": 0,
             "index": 4294967295,
             "sequence": "42",
+            "sigOpCount": null,
             "signatureScript": "",
             "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
           }
@@ -2297,8 +2384,280 @@ const v1SigningFixture = r'''{
           "scriptVersion": 0
         }
       ]
+    },
+    {
+      "expected": [
+        {
+          "hashes": [
+            {
+              "ecdsa": "b98c0972666a7fa4109380b7116a486113c5c3b3cf2075cdb3cc78f6caa577cc",
+              "hashType": 1,
+              "schnorr": "7a0d36c86f841d1ecaa8b6cd003092a24a1287cf21af510f5e78c3ec5cfb5fd7"
+            },
+            {
+              "ecdsa": "7c91f2415bdb34fdd125c3878f2a4d32dc9167cea5ce7cda7ff80e03ca5ccf36",
+              "hashType": 2,
+              "schnorr": "3cd6fade592ae1643e5301e8f8d624befa5c5aceb048b25f2c627a2015ea025f"
+            },
+            {
+              "ecdsa": "fa9d6e67f2f2a3875fd9f4f3c2e7075fed605d6425eb74b512bd9d2cdc345b14",
+              "hashType": 4,
+              "schnorr": "54ed4265d9c4aa38d06bb67f7b2772934f787e6dd2fea9eafd15ce8c47d5db40"
+            },
+            {
+              "ecdsa": "9acbbb09575fac8306c6081d22af698b6277dd65ba9407eb8276245c1b098bee",
+              "hashType": 129,
+              "schnorr": "f82eede728dff6ae6608af354e6f0e7cbcefd3eddca2f3254f667a64ee22fef4"
+            },
+            {
+              "ecdsa": "005d2e54e5bb5d47cc18fc1d9fb58db8564638f1796df87c4b59e6706bbfd433",
+              "hashType": 130,
+              "schnorr": "e11a36ccc82517d4e01d83b229276fca1b3bfbbf786ff0bcf12b3613323c82dc"
+            },
+            {
+              "ecdsa": "c08d406fd44fd2229ff330e1998422e8969ae156e2cc02fcf68f57a792160593",
+              "hashType": 132,
+              "schnorr": "77041beb36602a51376fe78b029c1cc5c31da22006aafab2d461c2f9d2541751"
+            }
+          ],
+          "inputIndex": 0
+        },
+        {
+          "hashes": [
+            {
+              "ecdsa": "799b22b064dc99a9ba2d089d7a86bd93b4dfd133984aa178b3b49724dd9fbc10",
+              "hashType": 1,
+              "schnorr": "0d775029b857b37556f7c63186a993b1055fc5bb6d4588e677ff88430e151b30"
+            },
+            {
+              "ecdsa": "f0cf66080f43f638c2994da30d5a99e02a09b6416e83d07694134f748c26808c",
+              "hashType": 2,
+              "schnorr": "ead77f85ee9399150b3c76fe0e144f7432f8c453b693a6987d34907e02771466"
+            },
+            {
+              "ecdsa": "d3be9b453d253e903ac70d7685c73c2678695f2f365c0c1ad690d05deb7645ae",
+              "hashType": 4,
+              "schnorr": "c3c43ea836f956eee8db3252b84f5e8431b6efaab34a3977b27642b475bd8399"
+            },
+            {
+              "ecdsa": "562e8b80c1c4ee805d1e21668ae98393cf1a32d4f70f2299f74a7d63ad12b51b",
+              "hashType": 129,
+              "schnorr": "eab8405763eef1f986e48c0772b5a142dbca6699bf413cf694cbfef24658b075"
+            },
+            {
+              "ecdsa": "c723ef1a492f95bb4ac8303f0ad2aca7030b2653ec4bc565a9e24bbf91e55554",
+              "hashType": 130,
+              "schnorr": "8b259ac2bcb5b573b5bdef6ec26219730eb762a448421d2f9c3db979df340887"
+            },
+            {
+              "ecdsa": "8292814ae93ae53c062bdb7fef81f0d6bd143a18bdef4e181b03b3ae1ead8a6a",
+              "hashType": 132,
+              "schnorr": "8a42fa630361f483fce8000ae4c525b2e431d7eb553a7e78ed7131d16e0a512b"
+            }
+          ],
+          "inputIndex": 1
+        }
+      ],
+      "name": "legacy-v0-control",
+      "transaction": {
+        "gas": "0",
+        "id": "ca3e68d34257b1e1b0c3696b214e5be9f030b634f536635610f10d0af94b494c",
+        "inputs": [
+          {
+            "computeBudget": null,
+            "index": 0,
+            "sequence": "18446744073709551615",
+            "sigOpCount": 1,
+            "signatureScript": "",
+            "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
+          },
+          {
+            "computeBudget": null,
+            "index": 4294967295,
+            "sequence": "42",
+            "sigOpCount": 1,
+            "signatureScript": "",
+            "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
+          }
+        ],
+        "lockTime": "18446744073709551615",
+        "outputs": [
+          {
+            "covenant": null,
+            "rpcScriptPublicKey": "0000aa20ab87",
+            "script": "aa20ab87",
+            "scriptVersion": 0,
+            "value": "9007199254740993"
+          },
+          {
+            "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
+            "script": "20cdac",
+            "scriptVersion": 0,
+            "value": "17"
+          }
+        ],
+        "payload": "",
+        "subnetworkId": "0000000000000000000000000000000000000000",
+        "version": 0
+      },
+      "utxos": [
+        {
+          "amount": "9007199254741010",
+          "covenantId": null,
+          "script": "aa20ef87",
+          "scriptVersion": 0
+        },
+        {
+          "amount": "18446744073709551615",
+          "covenantId": null,
+          "script": "20ddac",
+          "scriptVersion": 0
+        }
+      ]
+    },
+    {
+      "expected": [
+        {
+          "hashes": [
+            {
+              "ecdsa": "4ff3cba90c22b87a184709af74db611826c777fd2d8ebd808c219485d62e59c5",
+              "hashType": 1,
+              "schnorr": "bef46399ffea1483f162255eafc2a63015d7a7f700f35ca818c4485bb0be421a"
+            },
+            {
+              "ecdsa": "4d925258d0616c49f349797ffdfd942aaaf984441a6dfd50736911654b57e60c",
+              "hashType": 2,
+              "schnorr": "c1497551096dc0c1d7fb8bd767c51524080af1f22ae8f49ebb939652599c5813"
+            },
+            {
+              "ecdsa": "52fa65408eb6ab917b80daf12b3c1cdb634c191b5d3c44fcff36a34db5d173e8",
+              "hashType": 4,
+              "schnorr": "2ee95b4bc2b47bc45145aa91453efe15e3686b3e9e73b6d397e22c66c2462f1e"
+            },
+            {
+              "ecdsa": "5308402845839986d1bfb0c8516df4b45633a6acfcbb1c26370770ec9aa91b7b",
+              "hashType": 129,
+              "schnorr": "c0c25ed7456d61c273fafdf24df7697dfed05fb33619fbf75f1d088abb1ad9e3"
+            },
+            {
+              "ecdsa": "fd3370adb2e18f7b7a6e1f550aed20ad764b78ceeefc45e262b9cc49b9053b99",
+              "hashType": 130,
+              "schnorr": "80ef6b63afdcf6b4c83158eff6f52f0ebf6a427303c11f560b378b64f65f04a4"
+            },
+            {
+              "ecdsa": "c952239d04b12b43e551c6f6baf574b05cfc855ac6aad5c363e98c9efdda0f9b",
+              "hashType": 132,
+              "schnorr": "9683658f12fd05ce61b454df2336a232149fba82f2270654bda570e7ec0ef6d2"
+            }
+          ],
+          "inputIndex": 0
+        },
+        {
+          "hashes": [
+            {
+              "ecdsa": "a885845f6c9bef196cf22cdb1632fb5a94f8b98def865d4e9064596dcb67c530",
+              "hashType": 1,
+              "schnorr": "b715ff05f8fc3b2db16a9d47c2d99f552e25d6412ffdbd5e0b8062860c49c181"
+            },
+            {
+              "ecdsa": "7ebdbf75926b7a5e7cdfdd8dc5804ee972537b78381de904d1ed429d94725c21",
+              "hashType": 2,
+              "schnorr": "bbd054e39dbb485b3004dc53d0bc33633477b021b9c81a69ae8ddc3c052e4cb2"
+            },
+            {
+              "ecdsa": "f9bfa38c07c28a495a846d89b42f85c48fe2b103fccc13acf603826a994afc22",
+              "hashType": 4,
+              "schnorr": "af1672f91fd6ad305d1deaed8665840149bb94fe7dfb3577ab27b0e30190f2a0"
+            },
+            {
+              "ecdsa": "2d8be565e6563d8c62495590530cb77f43f7c453c2324c51a1b15f1388ac4dc7",
+              "hashType": 129,
+              "schnorr": "de498a53a9e1b0ae2826884dbf11ffecbd18d339c71ad003d70628327c7073b7"
+            },
+            {
+              "ecdsa": "ef977dc378b21730df9f417ca68223e1dd1ad7cb67854346961c18170b34e4af",
+              "hashType": 130,
+              "schnorr": "20822506208ca581e91cff7801064acee8c5cbf2275f26c753525654f271890a"
+            },
+            {
+              "ecdsa": "63f8aa226a57100e46e189117b47f42e2bcfb66f87e953f66381b43c933f4749",
+              "hashType": 132,
+              "schnorr": "c71047b567c19c247edea885954c63c57495c6ebaed75bc97431d7d8a7bdb710"
+            }
+          ],
+          "inputIndex": 1
+        }
+      ],
+      "name": "output-script-version",
+      "transaction": {
+        "gas": "0",
+        "id": "0eda04fff50a8270010cc97f8e3e24d439be7c74cca7df7398cfdd45a406fa9a",
+        "inputs": [
+          {
+            "computeBudget": 65535,
+            "index": 0,
+            "sequence": "18446744073709551615",
+            "sigOpCount": null,
+            "signatureScript": "",
+            "transactionId": "1111111111111111111111111111111111111111111111111111111111111111"
+          },
+          {
+            "computeBudget": 0,
+            "index": 4294967295,
+            "sequence": "42",
+            "sigOpCount": null,
+            "signatureScript": "",
+            "transactionId": "2222222222222222222222222222222222222222222222222222222222222222"
+          }
+        ],
+        "lockTime": "18446744073709551615",
+        "outputs": [
+          {
+            "covenant": {
+              "authorizingInput": 0,
+              "covenantId": "abababababababababababababababababababababababababababababababab"
+            },
+            "rpcScriptPublicKey": "1234aa20ab87",
+            "script": "aa20ab87",
+            "scriptVersion": 4660,
+            "value": "9007199254740993"
+          },
+          {
+            "covenant": null,
+            "rpcScriptPublicKey": "000020cdac",
+            "script": "20cdac",
+            "scriptVersion": 0,
+            "value": "17"
+          }
+        ],
+        "payload": "",
+        "subnetworkId": "0000000000000000000000000000000000000000",
+        "version": 1
+      },
+      "utxos": [
+        {
+          "amount": "9007199254741010",
+          "covenantId": "abababababababababababababababababababababababababababababababab",
+          "script": "aa20ef87",
+          "scriptVersion": 0
+        },
+        {
+          "amount": "18446744073709551615",
+          "covenantId": null,
+          "script": "20ddac",
+          "scriptVersion": 0
+        }
+      ]
     }
   ],
+  "legacyIdentityControls": {
+    "fixed-outpoint": "c9dd78e818445f617a28348d6db752142e2fab440effa58140ad2773e638b628",
+    "lock-and-gas": "7cd34b788d7d230970d4bfd955c34c5abc49e3bcdd5adb03a77bb71d05554401",
+    "one-input": "b2d65ae36e123eb73f253176d7234a57656b84d0d60b9fc746ab0d0f085c9cc7",
+    "one-output": "67289b12146d1b5ef384332137399791a5cfe89506ff31688b0d95ae821d0a0c",
+    "registry-payload": "4acda997dfb31c6518224c9ac00d0777fc7cbecdab461be3c0816b1cba19a056"
+  },
   "reference": "a41a333b08848f41bf737b72592e463a6011b8ac",
   "scope": "signature hashing only, no transaction acceptance"
 }

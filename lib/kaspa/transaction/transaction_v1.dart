@@ -3,6 +3,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:blake3_dart/blake3_dart.dart';
+import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import 'package:pointycastle/digests/blake2b.dart';
 
@@ -76,6 +78,75 @@ final class TransactionOutputV1 {
   }
 }
 
+/// Fields committed by v1 identity, without requiring spent outputs or signing data.
+final class TransactionInputIdentityV1 {
+  final Uint8List transactionId;
+  final int outputIndex;
+  final BigInt sequence;
+  TransactionInputIdentityV1(
+      {required List<int> transactionId,
+      required this.outputIndex,
+      required this.sequence})
+      : transactionId = _bytes(transactionId, length: 32) {
+    _unsigned(BigInt.from(outputIndex), 32);
+    _unsigned(sequence, 64);
+  }
+}
+
+final class TransactionIdentityV1 {
+  final int version;
+  final List<TransactionInputIdentityV1> inputs;
+  final List<TransactionOutputV1> outputs;
+  final BigInt lockTime;
+  final Uint8List subnetworkId;
+  final BigInt gas;
+  final Uint8List payload;
+  TransactionIdentityV1(
+      {this.version = 1,
+      required List<TransactionInputIdentityV1> inputs,
+      required List<TransactionOutputV1> outputs,
+      required this.lockTime,
+      required List<int> subnetworkId,
+      required this.gas,
+      required List<int> payload})
+      : inputs = List.unmodifiable(inputs),
+        outputs = List.unmodifiable(outputs),
+        subnetworkId = _bytes(subnetworkId, length: 20),
+        payload = _bytes(payload) {
+    _unsigned(BigInt.from(version), 16);
+    _unsigned(lockTime, 64);
+    _unsigned(gas, 64);
+  }
+  Uint8List get restPreimage {
+    if (version != 1) {
+      throw const FormatException('Only v1 identities are supported');
+    }
+    final rest = _Writer()
+      ..uint(BigInt.from(version), 2)
+      ..uint(BigInt.from(inputs.length), 8);
+    for (final input in inputs) {
+      rest.add(input.transactionId);
+      rest.uint(BigInt.from(input.outputIndex), 4);
+      rest.uint(BigInt.zero, 8);
+      rest.uint(input.sequence, 8);
+    }
+    rest.uint(BigInt.from(outputs.length), 8);
+    for (final output in outputs) {
+      rest.output(output);
+    }
+    rest.uint(lockTime, 8);
+    rest.add(subnetworkId);
+    rest.uint(gas, 8);
+    rest.uint(BigInt.zero, 8);
+    return rest.takeBytes();
+  }
+
+  String get id => hex.encode(_identityHash('TransactionV1Id', [
+        ..._identityHash('PayloadDigest', payload),
+        ..._identityHash('TransactionRest', restPreimage),
+      ]));
+}
+
 /// Separate from legacy transaction serialization: v1 omits sig-op-count
 /// commitments and commits every output's covenant-presence bit and binding.
 /// Budgets and signature scripts are not signature-hash fields under consensus;
@@ -110,6 +181,88 @@ final class TransactionV1 {
   }
 
   int get version => 1;
+
+  /// Consensus identity excludes witnesses and resource commitments.
+  TransactionIdentityV1 get identity => TransactionIdentityV1(
+          inputs: [
+            for (final input in inputs)
+              TransactionInputIdentityV1(
+                  transactionId: input.transactionId,
+                  outputIndex: input.outputIndex,
+                  sequence: input.sequence),
+          ],
+          outputs: outputs,
+          lockTime: lockTime,
+          subnetworkId: subnetworkId,
+          gas: gas,
+          payload: payload);
+
+  String get id => identity.id;
+
+  /// Fill witnesses without rebuilding any reviewed transaction fields.
+  TransactionV1 withSignatureScripts(List<List<int>> scripts) {
+    if (scripts.length != inputs.length) {
+      throw const FormatException('Every input requires one signature script');
+    }
+    return TransactionV1(
+        inputs: [
+          for (var i = 0; i < inputs.length; i++)
+            TransactionInputV1(
+                transactionId: inputs[i].transactionId,
+                outputIndex: inputs[i].outputIndex,
+                sequence: inputs[i].sequence,
+                computeBudget: inputs[i].computeBudget,
+                spentOutput: inputs[i].spentOutput,
+                signatureScript: scripts[i]),
+        ],
+        outputs: outputs,
+        lockTime: lockTime,
+        subnetworkId: subnetworkId,
+        gas: gas,
+        payload: payload);
+  }
+
+  /// Feed this fresh map to an exact-u64 RPC encoder, never jsonEncode directly.
+  /// v1 requires sigOpCount=0; computeBudget is the encoded u16 budget value.
+  Map<String, dynamic> toRpcJson({required BigInt storageMass}) {
+    _unsigned(storageMass, 64);
+    return {
+      'version': 1,
+      'inputs': [
+        for (final i in inputs)
+          {
+            'previousOutpoint': {
+              'transactionId': hex.encode(i.transactionId),
+              'index': i.outputIndex
+            },
+            'signatureScript': hex.encode(i.signatureScript),
+            'sequence': i.sequence,
+            'sigOpCount': 0,
+            'computeBudget': i.computeBudget,
+          }
+      ],
+      'outputs': [
+        for (final o in outputs)
+          {
+            'value': o.value,
+            'scriptPublicKey':
+                o.scriptVersion.toRadixString(16).padLeft(4, '0') +
+                    hex.encode(o.script),
+            'covenant': o.covenant == null
+                ? null
+                : {
+                    'authorizingInput': o.covenant!.authorizingInput,
+                    'covenantId': hex.encode(o.covenant!.covenantId),
+                  },
+          }
+      ],
+      'lockTime': lockTime,
+      'subnetworkId': hex.encode(subnetworkId),
+      'gas': gas,
+      'payload': hex.encode(payload),
+      'mass': storageMass,
+    };
+  }
 
   /// Supports the six consensus hash modes. Permission to use any mode is the
   /// wallet's responsibility; this function alone does not authorize a spend.
@@ -225,4 +378,9 @@ final class _Writer {
       add(covenant.covenantId);
     }
   }
+}
+
+Uint8List _identityHash(String domain, List<int> bytes) {
+  final key = Uint8List(32)..setAll(0, ascii.encode(domain));
+  return blake3Keyed(key, Uint8List.fromList(bytes));
 }
