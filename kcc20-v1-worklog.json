@@ -1,0 +1,35 @@
+{
+  "task": "KCC20 version-1 transaction support",
+  "date": "2026-10-20",
+  "base": "0226883e46e4e007c12a2106a45b721dd7e41d89",
+  "scope": "Immutable version-1 transaction/spent-output/output-binding models and all six Schnorr/ECDSA signature-hash modes; no key access, authorization, broadcast or fee planning added",
+  "verification": {
+    "native_v1_cases": 21,
+    "headless_web_v1_cases": 21,
+    "independent_hash_comparisons": 432,
+    "independent_cases": 18,
+    "reference_revision": "a41a333b08848f41bf737b72592e463a6011b8ac",
+    "reference_reproducible_with_locked_dependencies": true,
+    "targeted_analysis": "passed",
+    "read_only_review": "/root/review_kcc23 found no blocking source issue; suggested non-native empty-payload and empty-output branches added to upstream vectors"
+  },
+  "full_sdk_suite": {
+    "status": "failed_to_load_existing_legacy_test",
+    "cause": "Existing test/kaspa_dart_test.dart imports ignored/missing test/config.dart and undefined fixture names; new v1 cases passed",
+    "action": "Replace the legacy private-config dependency with deterministic public offline fixtures and preserve meaningful v0 signing/derivation checks before integration"
+  },
+  "remaining": [
+    "Complete legacy SDK regression setup without private fixture dependency",
+    "Add version-1 transaction ID/RPC serialization/fee and budget integration as needed",
+    "Connect existing wallet signing session and immutable reviewed KCC20 intent",
+    "Construct, sign, broadcast and confirm a real owned DEV/TN10 transfer",
+    "Complete applicable independent review and real-wallet gates"
+  ],
+  "delivery": {
+    "draft_only": true,
+    "production_changed": false,
+    "wallet_dependency_changed": false,
+    "user_ready": false
+  },
+  "overall_goal": "All nine features remain active in Core covenants/kcc20-worklog.json and KSNV-301"
+}

@@ -1,0 +1,12 @@
+{
+  "reference": "a41a333b08848f41bf737b72592e463a6011b8ac",
+  "source": "https://github.com/kaspanet/rusty-kaspa/blob/a41a333b08848f41bf737b72592e463a6011b8ac/consensus/core/src/hashing/sighash.rs",
+  "command": "cargo +1.94.1 run --locked --manifest-path tool/v1_reference/Cargo.toml",
+  "scope": "18 artificial hash cases, two inputs, six modes, Schnorr and ECDSA; does not establish signing authorization or transaction acceptance",
+  "sha256": {
+    "tool/v1_reference/Cargo.toml": "ea2eba7c58fea5210de5d4389647bfd6ed52a74a9f84f0fcf0e289906c3d5f4a",
+    "tool/v1_reference/Cargo.lock": "5fa8d079a4e0b7dff108d69969bdbb1289ae0621103aa2205523481a9f4cd74e",
+    "tool/v1_reference/src/main.rs": "13c0b81b1c8034488c7e3c6481516d22daf13e1c2a74453c54eb0e1938df3e57",
+    "test/fixtures/v1_signing.json": "845c3a6cb916b569756609f0e8430d853e8c9fcdfcb4f503f3d17d9b67ad7eec"
+  }
+}
