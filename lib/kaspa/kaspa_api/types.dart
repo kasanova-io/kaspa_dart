@@ -1,3 +1,6 @@
+// Freezed copies these constructor annotations to the generated model classes.
+// ignore_for_file: invalid_annotation_target
+
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -6,8 +9,21 @@ import '../grpc/rpc.pb.dart';
 part 'types.freezed.dart';
 part 'types.g.dart';
 
+// Keep REST integers strict when regenerating: fractional amounts, indices and
+// resource budgets must not be silently truncated by json_serializable.
+class _StrictRestIntConverter implements JsonConverter<int, Object> {
+  const _StrictRestIntConverter();
+
+  @override
+  int fromJson(Object value) => value as int;
+
+  @override
+  Object toJson(int value) => value;
+}
+
 @freezed
 class ApiAddressBalance with _$ApiAddressBalance {
+  @JsonSerializable(converters: [_StrictRestIntConverter()])
   const factory ApiAddressBalance({
     required String address,
     required int balance,
@@ -31,6 +47,7 @@ class ApiUtxo with _$ApiUtxo {
 
 @freezed
 class ApiOutpoint with _$ApiOutpoint {
+  @JsonSerializable(converters: [_StrictRestIntConverter()])
   const factory ApiOutpoint({
     required String transactionId,
     required int index,
@@ -55,6 +72,7 @@ class ApiUtxoEntry with _$ApiUtxoEntry {
 
 @freezed
 class ApiScriptPublicKey with _$ApiScriptPublicKey {
+  @JsonSerializable(converters: [_StrictRestIntConverter()])
   const factory ApiScriptPublicKey({
     required String scriptPublicKey,
     @Default(0) int version,
@@ -78,7 +96,8 @@ class ApiTxLink with _$ApiTxLink {
 
 @freezed
 class ApiTxId with _$ApiTxId {
-  @JsonSerializable(fieldRename: FieldRename.snake)
+  @JsonSerializable(
+      fieldRename: FieldRename.snake, converters: [_StrictRestIntConverter()])
   const factory ApiTxId({
     required String transactionId,
     int? blockTime,
@@ -90,14 +109,18 @@ class ApiTxId with _$ApiTxId {
 
 @freezed
 class ApiTxInput with _$ApiTxInput {
-  @JsonSerializable(fieldRename: FieldRename.snake)
+  @JsonSerializable(
+      fieldRename: FieldRename.snake, converters: [_StrictRestIntConverter()])
   const factory ApiTxInput({
     required String transactionId,
     required int index,
     required String previousOutpointHash,
     required BigInt previousOutpointIndex,
     required String signatureScript,
-    required BigInt sigOpCount,
+    // REST v1 inputs use compute_budget and return null for sig_op_count.
+    // Preserve the absent legacy value rather than inventing a zero count.
+    required BigInt? sigOpCount,
+    int? computeBudget,
     // new fields
     String? previousOutpointAddress,
     int? previousOutpointAmount,
@@ -109,7 +132,8 @@ class ApiTxInput with _$ApiTxInput {
 
 @freezed
 class ApiTxOutput with _$ApiTxOutput {
-  @JsonSerializable(fieldRename: FieldRename.snake)
+  @JsonSerializable(
+      fieldRename: FieldRename.snake, converters: [_StrictRestIntConverter()])
   const factory ApiTxOutput({
     required String transactionId,
     required int index,
@@ -126,17 +150,19 @@ class ApiTxOutput with _$ApiTxOutput {
 @freezed
 class ApiTransaction with _$ApiTransaction {
   ApiTransaction._();
-  @JsonSerializable(fieldRename: FieldRename.snake)
+  @JsonSerializable(
+      fieldRename: FieldRename.snake, converters: [_StrictRestIntConverter()])
   factory ApiTransaction({
     String? subnetworkId,
+    int? version,
     required String transactionId,
-    @Default(const []) List<String> blockHash,
+    @Default([]) List<String> blockHash,
     required int blockTime,
     required bool isAccepted,
     String? acceptingBlockHash,
     int? acceptingBlockBlueScore,
-    @Default(const []) List<ApiTxInput> inputs,
-    @Default(const []) List<ApiTxOutput> outputs,
+    @Default([]) List<ApiTxInput> inputs,
+    @Default([]) List<ApiTxOutput> outputs,
   }) = _Transaction;
 
   factory ApiTransaction.fromJson(Map<String, dynamic> json) =>
@@ -144,6 +170,7 @@ class ApiTransaction with _$ApiTransaction {
 
   factory ApiTransaction.fromRpc(RpcTransaction tx) {
     return ApiTransaction(
+      version: tx.version,
       transactionId: tx.verboseData.transactionId,
       blockTime: tx.verboseData.blockTime.toInt(),
       isAccepted: false,
@@ -154,7 +181,7 @@ class ApiTransaction with _$ApiTransaction {
           previousOutpointHash: e.previousOutpoint.transactionId,
           previousOutpointIndex: BigInt.from(e.previousOutpoint.index),
           signatureScript: e.signatureScript,
-          sigOpCount: BigInt.from(e.sigOpCount),
+          sigOpCount: tx.version == 0 ? BigInt.from(e.sigOpCount) : null,
         );
       }).toList(),
       outputs: tx.outputs.mapIndexed((index, e) {
