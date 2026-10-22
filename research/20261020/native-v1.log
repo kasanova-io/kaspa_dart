@@ -1,0 +1,23 @@
+00:00 +0: loading /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart
+00:00 +0: node v1 signature vectors: base
+00:00 +1: node v1 signature vectors: binding-id
+00:00 +2: node v1 signature vectors: authorizing-input
+00:00 +3: node v1 signature vectors: no-binding
+00:00 +4: node v1 signature vectors: sequence
+00:00 +5: node v1 signature vectors: outpoint
+00:00 +6: node v1 signature vectors: output-value
+00:00 +7: node v1 signature vectors: max-output-value
+00:00 +8: node v1 signature vectors: utxo-amount
+00:00 +9: node v1 signature vectors: utxo-script
+00:00 +10: node v1 signature vectors: utxo-script-version
+00:00 +11: node v1 signature vectors: payload
+00:00 +12: node v1 signature vectors: gas
+00:00 +13: node v1 signature vectors: single-missing-output
+00:00 +14: node v1 signature vectors: unsigned-budgets-and-scripts
+00:00 +15: node v1 signature vectors: non-native-empty-payload
+00:00 +16: node v1 signature vectors: non-native-with-payload
+00:00 +17: node v1 signature vectors: all-with-no-outputs
+00:00 +18: reviewed signing data owns its bytes and rejects direct mutation
+00:00 +19: invalid hash modes and input indices cannot silently authorize
+00:00 +20: out-of-range amounts and missing authorizing inputs are rejected
+00:00 +21: All tests passed!
