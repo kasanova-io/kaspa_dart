@@ -10,7 +10,7 @@ part 'types.g.dart';
 class ApiAddressBalance with _$ApiAddressBalance {
   const factory ApiAddressBalance({
     required String address,
-    required int balance,
+    @_StrictHistoryInt() required int balance,
   }) = _ApiAddressBalance;
 
   factory ApiAddressBalance.fromJson(Map<String, dynamic> json) =>
@@ -33,7 +33,7 @@ class ApiUtxo with _$ApiUtxo {
 class ApiOutpoint with _$ApiOutpoint {
   const factory ApiOutpoint({
     required String transactionId,
-    required int index,
+    @_StrictHistoryInt() required int index,
   }) = _Outpoint;
 
   factory ApiOutpoint.fromJson(Map<String, dynamic> json) =>
@@ -57,7 +57,7 @@ class ApiUtxoEntry with _$ApiUtxoEntry {
 class ApiScriptPublicKey with _$ApiScriptPublicKey {
   const factory ApiScriptPublicKey({
     required String scriptPublicKey,
-    @Default(0) int version,
+    @_StrictHistoryInt() @Default(0) int version,
   }) = _ApiScriptPublicKey;
 
   factory ApiScriptPublicKey.fromJson(Map<String, dynamic> json) =>
@@ -81,7 +81,7 @@ class ApiTxId with _$ApiTxId {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ApiTxId({
     required String transactionId,
-    int? blockTime,
+    @_StrictHistoryInt() int? blockTime,
   }) = _ApiTxId;
 
   factory ApiTxId.fromJson(Map<String, dynamic> json) =>
@@ -93,14 +93,17 @@ class ApiTxInput with _$ApiTxInput {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ApiTxInput({
     required String transactionId,
-    required int index,
+    @_StrictHistoryInt() required int index,
     required String previousOutpointHash,
     required BigInt previousOutpointIndex,
     required String signatureScript,
-    required BigInt sigOpCount,
+    // V1 replaces the legacy signature count with an explicit compute budget.
+    // Preserve absent fields; this history DTO is not a signing transaction.
+    @JsonKey(fromJson: _historySigOpCountFromJson) required BigInt? sigOpCount,
+    @JsonKey(fromJson: _historyUint16FromJson) int? computeBudget,
     // new fields
     String? previousOutpointAddress,
-    int? previousOutpointAmount,
+    @_StrictHistoryInt() int? previousOutpointAmount,
   }) = _ApiTxInput;
 
   factory ApiTxInput.fromJson(Map<String, dynamic> json) =>
@@ -112,8 +115,8 @@ class ApiTxOutput with _$ApiTxOutput {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ApiTxOutput({
     required String transactionId,
-    required int index,
-    required int amount,
+    @_StrictHistoryInt() required int index,
+    @_StrictHistoryInt() required int amount,
     required String scriptPublicKey,
     required String scriptPublicKeyAddress,
     required String scriptPublicKeyType,
@@ -129,12 +132,13 @@ class ApiTransaction with _$ApiTransaction {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory ApiTransaction({
     String? subnetworkId,
+    @JsonKey(fromJson: _historyUint16FromJson) int? version,
     required String transactionId,
     @Default(const []) List<String> blockHash,
-    required int blockTime,
+    @_StrictHistoryInt() required int blockTime,
     required bool isAccepted,
     String? acceptingBlockHash,
-    int? acceptingBlockBlueScore,
+    @_StrictHistoryInt() int? acceptingBlockBlueScore,
     @Default(const []) List<ApiTxInput> inputs,
     @Default(const []) List<ApiTxOutput> outputs,
   }) = _Transaction;
@@ -145,6 +149,7 @@ class ApiTransaction with _$ApiTransaction {
   factory ApiTransaction.fromRpc(RpcTransaction tx) {
     return ApiTransaction(
       transactionId: tx.verboseData.transactionId,
+      version: tx.version.toInt(),
       blockTime: tx.verboseData.blockTime.toInt(),
       isAccepted: false,
       inputs: tx.inputs.mapIndexed((index, e) {
@@ -169,4 +174,39 @@ class ApiTransaction with _$ApiTransaction {
       }).toList(),
     );
   }
+}
+
+// History metadata retains absent v1/legacy fields without inventing values.
+BigInt? _historySigOpCountFromJson(Object? value) {
+  if (value == null) return null;
+  if (value is! String) {
+    throw const FormatException(
+        'History signature count must be a decimal string');
+  }
+  if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+    throw const FormatException(
+        'History signature count must be decimal digits');
+  }
+  final count = BigInt.tryParse(value);
+  if (count == null || count.isNegative || count > BigInt.from(255)) {
+    throw const FormatException('History signature count is outside uint8');
+  }
+  return count;
+}
+
+int? _historyUint16FromJson(Object? value) {
+  if (value == null) return null;
+  if (value is! int || value < 0 || value > 65535) {
+    throw const FormatException('History metadata must be an integer uint16');
+  }
+  return value;
+}
+
+// Keep the existing strict integer contract across serializer versions.
+class _StrictHistoryInt implements JsonConverter<int, Object> {
+  const _StrictHistoryInt();
+  @override
+  int fromJson(Object value) => value as int;
+  @override
+  Object toJson(int value) => value;
 }
