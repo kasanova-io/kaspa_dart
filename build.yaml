@@ -1,0 +1,9 @@
+# Preserve the existing strict REST DTO and direct-map round-trip contract.
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          any_map: true
+          explicit_to_json: true
+          include_if_null: false

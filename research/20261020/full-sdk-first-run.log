@@ -1,0 +1,78 @@
+00:00 +0: loading /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/kaspa_dart_test.dart
+test/kaspa_dart_test.dart:9:8: Error: Error when reading 'test/config.dart': No such file or directory
+import 'config.dart';
+       ^
+test/kaspa_dart_test.dart:14:46: Error: Undefined name 'testWordsFiscal'.
+    final seedHex = $kaspa.mnemonicToSeedHex(testWordsFiscal);
+                                             ^^^^^^^^^^^^^^^
+test/kaspa_dart_test.dart:59:45: Error: Undefined name 'testToAddress'.
+    final toAddress = Address.decodeAddress(testToAddress);
+                                            ^^^^^^^^^^^^^
+test/kaspa_dart_test.dart:62:46: Error: Undefined name 'testWordsFiscal'.
+    final seedHex = $kaspa.mnemonicToSeedHex(testWordsFiscal);
+                                             ^^^^^^^^^^^^^^^
+test/kaspa_dart_test.dart:72:34: Error: Undefined name 'utxoJsonString'.
+    final testUtxos = jsonDecode(utxoJsonString) as List;
+                                 ^^^^^^^^^^^^^^
+00:00 +0 -1: loading /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/kaspa_dart_test.dart [E]
+  Failed to load "/Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/kaspa_dart_test.dart":
+  Compilation failed for testPath=/Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/kaspa_dart_test.dart: test/kaspa_dart_test.dart:9:8: Error: Error when reading 'test/config.dart': No such file or directory
+  import 'config.dart';
+         ^
+  test/kaspa_dart_test.dart:14:46: Error: Undefined name 'testWordsFiscal'.
+      final seedHex = $kaspa.mnemonicToSeedHex(testWordsFiscal);
+                                               ^^^^^^^^^^^^^^^
+  test/kaspa_dart_test.dart:59:45: Error: Undefined name 'testToAddress'.
+      final toAddress = Address.decodeAddress(testToAddress);
+                                              ^^^^^^^^^^^^^
+  test/kaspa_dart_test.dart:62:46: Error: Undefined name 'testWordsFiscal'.
+      final seedHex = $kaspa.mnemonicToSeedHex(testWordsFiscal);
+                                               ^^^^^^^^^^^^^^^
+  test/kaspa_dart_test.dart:72:34: Error: Undefined name 'utxoJsonString'.
+      final testUtxos = jsonDecode(utxoJsonString) as List;
+                                   ^^^^^^^^^^^^^^
+  .
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1009:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 733:19                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 726:19                      _CustomZone.run
+  dart:async/zone.dart 625:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 666:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+
+00:00 +0 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: base
+00:00 +1 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: binding-id
+00:00 +2 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: authorizing-input
+00:00 +3 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: no-binding
+00:00 +4 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: sequence
+00:00 +5 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: outpoint
+00:00 +6 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: output-value
+00:00 +7 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: max-output-value
+00:00 +8 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: utxo-amount
+00:00 +9 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: utxo-script
+00:00 +10 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: utxo-script-version
+00:00 +11 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: payload
+00:00 +12 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: gas
+00:00 +13 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: single-missing-output
+00:00 +14 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: unsigned-budgets-and-scripts
+00:00 +15 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: non-native-empty-payload
+00:00 +16 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: non-native-with-payload
+00:00 +17 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: node v1 signature vectors: all-with-no-outputs
+00:00 +18 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: reviewed signing data owns its bytes and rejects direct mutation
+00:00 +19 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: invalid hash modes and input indices cannot silently authorize
+00:00 +20 -1: /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart: out-of-range amounts and missing authorizing inputs are rejected
+00:00 +21 -1: Some tests failed.
+
+Failing tests:
+  /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/kaspa_dart_test.dart: loading /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/kaspa_dart_test.dart

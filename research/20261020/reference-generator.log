@@ -1,0 +1,3 @@
+   Compiling kasanova-v1-reference-vectors v0.1.0 (/Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/tool/v1_reference)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.80s
+     Running `/Volumes/OdessaExt/Kasanova/.runtime/kcc23-verification-20261020/cargo-target/debug/kasanova-v1-reference-vectors`

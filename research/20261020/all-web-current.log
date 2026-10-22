@@ -1,0 +1,30 @@
+Waiting for another flutter command to release the startup lock...
+00:00 +0: loading /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/kaspa_dart_test.dart
+00:00 +0: test/kaspa_dart_test.dart: legacy derivation retains identity through extended key import
+00:08 +1: test/kaspa_dart_test.dart: legacy SIGHASH_ALL remains identical to node control vectors
+00:13 +2: loading /Volumes/OdessaExt/Kasanova/.worktrees/kcc20-sdk-v1-20261020/test/transaction_v1_test.dart
+00:14 +2: test/transaction_v1_test.dart: node v1 signature vectors: base
+00:14 +3: test/transaction_v1_test.dart: node v1 signature vectors: binding-id
+00:14 +4: test/transaction_v1_test.dart: node v1 signature vectors: authorizing-input
+00:14 +5: test/transaction_v1_test.dart: node v1 signature vectors: no-binding
+00:14 +6: test/transaction_v1_test.dart: node v1 signature vectors: sequence
+00:14 +7: test/transaction_v1_test.dart: node v1 signature vectors: outpoint
+00:14 +8: test/transaction_v1_test.dart: node v1 signature vectors: output-value
+00:14 +9: test/transaction_v1_test.dart: node v1 signature vectors: max-output-value
+00:14 +10: test/transaction_v1_test.dart: node v1 signature vectors: utxo-amount
+00:14 +11: test/transaction_v1_test.dart: node v1 signature vectors: utxo-script
+00:14 +12: test/transaction_v1_test.dart: node v1 signature vectors: utxo-script-version
+00:14 +13: test/transaction_v1_test.dart: node v1 signature vectors: payload
+00:14 +14: test/transaction_v1_test.dart: node v1 signature vectors: gas
+00:14 +15: test/transaction_v1_test.dart: node v1 signature vectors: single-missing-output
+00:14 +16: test/transaction_v1_test.dart: node v1 signature vectors: unsigned-budgets-and-scripts
+00:14 +17: test/transaction_v1_test.dart: node v1 signature vectors: non-native-empty-payload
+00:14 +18: test/transaction_v1_test.dart: node v1 signature vectors: non-native-with-payload
+00:14 +19: test/transaction_v1_test.dart: node v1 signature vectors: all-with-no-outputs
+00:14 +20: test/transaction_v1_test.dart: node v1 signature vectors: output-script-version
+00:14 +21: test/transaction_v1_test.dart: filling witnesses retains the exact transaction and RPC budget variant
+00:14 +22: test/transaction_v1_test.dart: reviewed signing data owns its bytes and rejects direct mutation
+00:14 +23: test/transaction_v1_test.dart: read-only identities reject legacy and unrecognized future versions
+00:14 +24: test/transaction_v1_test.dart: invalid hash modes and input indices cannot silently authorize
+00:14 +25: test/transaction_v1_test.dart: out-of-range amounts and missing authorizing inputs are rejected
+00:14 +26: All tests passed!
