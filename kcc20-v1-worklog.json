@@ -1,0 +1,42 @@
+{
+  "task": "KCC20 version-1 transaction support",
+  "date": "2026-10-20",
+  "base": "0226883e46e4e007c12a2106a45b721dd7e41d89",
+  "scope": "Immutable v1 signing and read-only identity models; canonical BLAKE3 IDs, witness filling, exact RPC payload, six signature modes. Existing signing/key APIs unchanged.",
+  "verification": {
+    "native_v1_cases": 21,
+    "headless_web_v1_cases": 21,
+    "independent_hash_comparisons": 432,
+    "independent_cases": 18,
+    "reference_revision": "a41a333b08848f41bf737b72592e463a6011b8ac",
+    "reference_reproducible_with_locked_dependencies": true,
+    "targeted_analysis": "passed",
+    "read_only_review": "Incremental source rechecked by /root/review_kcc23; no blocking defect. Resource commitments must be frozen separately from ID in the approval layer.",
+    "native_full_suite": 26,
+    "headless_full_suite": 26,
+    "independent_v1_hash_comparisons": 456,
+    "independent_v1_cases": 19,
+    "legacy_signing_controls": 1,
+    "legacy_identity_controls": 5,
+    "canonical_ids": "19 node-generated v1 IDs; legacy v0 controls independently exported",
+    "rpc_fields": "sigOpCount zero, encoded compute budget, big-endian script version, exact u64"
+  },
+  "full_sdk_suite": {
+    "status": "passed native and headless web",
+    "legacy_repair": "Replaced private-config/print demo with public offline derivation/import, independent v0 SIGHASH_ALL and signature mutation checks; no network submission."
+  },
+  "remaining": [
+    "Integrate canonical identities and complete covenant persistence into the existing wallet; freeze budgets/storage mass with reviewed plan",
+    "Connect existing wallet signing session and immutable reviewed KCC20 intent",
+    "Construct, sign, broadcast and confirm a real owned DEV/TN10 transfer",
+    "Complete applicable independent review and real-wallet gates"
+  ],
+  "delivery": {
+    "draft_only": true,
+    "production_changed": false,
+    "wallet_dependency_changed": false,
+    "user_ready": false
+  },
+  "overall_goal": "All nine features remain active in Core covenants/kcc20-worklog.json and KSNV-301",
+  "previous_goal_turn": "Progress: recovered wallet source preserved in draft PRs and v1 signature model implemented; this turn repaired full SDK regression setup and implemented identities/transport."
+}
