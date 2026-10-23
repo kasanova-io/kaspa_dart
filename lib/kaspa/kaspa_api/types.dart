@@ -1,3 +1,6 @@
+// Freezed forwards these constructor/parameter annotations to generated models.
+// ignore_for_file: invalid_annotation_target
+
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -134,13 +137,13 @@ class ApiTransaction with _$ApiTransaction {
     String? subnetworkId,
     @JsonKey(fromJson: _historyUint16FromJson) int? version,
     required String transactionId,
-    @Default(const []) List<String> blockHash,
+    @Default([]) List<String> blockHash,
     @_StrictHistoryInt() required int blockTime,
     required bool isAccepted,
     String? acceptingBlockHash,
     @_StrictHistoryInt() int? acceptingBlockBlueScore,
-    @Default(const []) List<ApiTxInput> inputs,
-    @Default(const []) List<ApiTxOutput> outputs,
+    @Default([]) List<ApiTxInput> inputs,
+    @Default([]) List<ApiTxOutput> outputs,
   }) = _Transaction;
 
   factory ApiTransaction.fromJson(Map<String, dynamic> json) =>
@@ -159,7 +162,9 @@ class ApiTransaction with _$ApiTransaction {
           previousOutpointHash: e.previousOutpoint.transactionId,
           previousOutpointIndex: BigInt.from(e.previousOutpoint.index),
           signatureScript: e.signatureScript,
-          sigOpCount: BigInt.from(e.sigOpCount),
+          // The legacy protobuf has no v1 compute-budget field; its default
+          // signature count is not evidence of a real v1 legacy resource.
+          sigOpCount: tx.version == 0 ? BigInt.from(e.sigOpCount) : null,
         );
       }).toList(),
       outputs: tx.outputs.mapIndexed((index, e) {
