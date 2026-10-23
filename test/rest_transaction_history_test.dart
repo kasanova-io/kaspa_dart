@@ -71,7 +71,7 @@ void main() {
     expect(() => ApiTxInput.fromJson(input(sigOpCount: 'invalid')),
         throwsFormatException);
     expect(() => ApiTxInput.fromJson(input(computeBudget: 'invalid')),
-        throwsA(isA<TypeError>()));
+        throwsFormatException);
   });
 
   test('missing transaction version stays unknown', () {
@@ -106,11 +106,7 @@ void main() {
     final wire =
         jsonDecode(File('test/fixtures/rest_v1_buy.json').readAsStringSync())
             as Map<String, dynamic>;
-    for (final field in [
-      'index',
-      'previous_outpoint_amount',
-      'compute_budget'
-    ]) {
+    for (final field in ['index', 'previous_outpoint_amount']) {
       expect(() => ApiTxInput.fromJson({...wire['inputs'][0], field: 1.5}),
           throwsA(isA<TypeError>()),
           reason: field);
@@ -120,15 +116,19 @@ void main() {
           throwsA(isA<TypeError>()),
           reason: field);
     }
-    for (final field in [
-      'version',
-      'block_time',
-      'accepting_block_blue_score'
-    ]) {
+    for (final field in ['block_time', 'accepting_block_blue_score']) {
       expect(() => ApiTransaction.fromJson({...wire, field: 1.5}),
           throwsA(isA<TypeError>()),
           reason: field);
     }
+    // Newly introduced resource metadata uses the upstream bounded parser;
+    // legacy integer fields above retain their original strict TypeError.
+    expect(
+        () =>
+            ApiTxInput.fromJson({...wire['inputs'][0], 'compute_budget': 1.5}),
+        throwsFormatException);
+    expect(() => ApiTransaction.fromJson({...wire, 'version': 1.5}),
+        throwsFormatException);
     expect(
         () =>
             ApiAddressBalance.fromJson({'address': 'fixture', 'balance': 1.5}),

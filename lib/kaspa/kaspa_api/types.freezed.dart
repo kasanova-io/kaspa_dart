@@ -21,14 +21,11 @@ ApiAddressBalance _$ApiAddressBalanceFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiAddressBalance {
   String get address => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int get balance => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiAddressBalance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiAddressBalance
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiAddressBalanceCopyWith<ApiAddressBalance> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -39,7 +36,7 @@ abstract class $ApiAddressBalanceCopyWith<$Res> {
           ApiAddressBalance value, $Res Function(ApiAddressBalance) then) =
       _$ApiAddressBalanceCopyWithImpl<$Res, ApiAddressBalance>;
   @useResult
-  $Res call({String address, int balance});
+  $Res call({String address, @_StrictHistoryInt() int balance});
 }
 
 /// @nodoc
@@ -52,8 +49,6 @@ class _$ApiAddressBalanceCopyWithImpl<$Res, $Val extends ApiAddressBalance>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiAddressBalance
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,7 +76,7 @@ abstract class _$$ApiAddressBalanceImplCopyWith<$Res>
       __$$ApiAddressBalanceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String address, int balance});
+  $Res call({String address, @_StrictHistoryInt() int balance});
 }
 
 /// @nodoc
@@ -92,8 +87,6 @@ class __$$ApiAddressBalanceImplCopyWithImpl<$Res>
       $Res Function(_$ApiAddressBalanceImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiAddressBalance
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,10 +107,10 @@ class __$$ApiAddressBalanceImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(converters: [_StrictRestIntConverter()])
+@JsonSerializable()
 class _$ApiAddressBalanceImpl implements _ApiAddressBalance {
-  const _$ApiAddressBalanceImpl({required this.address, required this.balance});
+  const _$ApiAddressBalanceImpl(
+      {required this.address, @_StrictHistoryInt() required this.balance});
 
   factory _$ApiAddressBalanceImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApiAddressBalanceImplFromJson(json);
@@ -125,6 +118,7 @@ class _$ApiAddressBalanceImpl implements _ApiAddressBalance {
   @override
   final String address;
   @override
+  @_StrictHistoryInt()
   final int balance;
 
   @override
@@ -141,13 +135,11 @@ class _$ApiAddressBalanceImpl implements _ApiAddressBalance {
             (identical(other.balance, balance) || other.balance == balance));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, address, balance);
 
-  /// Create a copy of ApiAddressBalance
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiAddressBalanceImplCopyWith<_$ApiAddressBalanceImpl> get copyWith =>
@@ -164,8 +156,9 @@ class _$ApiAddressBalanceImpl implements _ApiAddressBalance {
 
 abstract class _ApiAddressBalance implements ApiAddressBalance {
   const factory _ApiAddressBalance(
-      {required final String address,
-      required final int balance}) = _$ApiAddressBalanceImpl;
+          {required final String address,
+          @_StrictHistoryInt() required final int balance}) =
+      _$ApiAddressBalanceImpl;
 
   factory _ApiAddressBalance.fromJson(Map<String, dynamic> json) =
       _$ApiAddressBalanceImpl.fromJson;
@@ -173,12 +166,10 @@ abstract class _ApiAddressBalance implements ApiAddressBalance {
   @override
   String get address;
   @override
+  @_StrictHistoryInt()
   int get balance;
-
-  /// Create a copy of ApiAddressBalance
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ApiAddressBalanceImplCopyWith<_$ApiAddressBalanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -193,12 +184,8 @@ mixin _$ApiUtxo {
   ApiOutpoint get outpoint => throw _privateConstructorUsedError;
   ApiUtxoEntry get utxoEntry => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiUtxo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiUtxo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiUtxoCopyWith<ApiUtxo> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -223,8 +210,6 @@ class _$ApiUtxoCopyWithImpl<$Res, $Val extends ApiUtxo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiUtxo
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -248,8 +233,6 @@ class _$ApiUtxoCopyWithImpl<$Res, $Val extends ApiUtxo>
     ) as $Val);
   }
 
-  /// Create a copy of ApiUtxo
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ApiOutpointCopyWith<$Res> get outpoint {
@@ -258,8 +241,6 @@ class _$ApiUtxoCopyWithImpl<$Res, $Val extends ApiUtxo>
     });
   }
 
-  /// Create a copy of ApiUtxo
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ApiUtxoEntryCopyWith<$Res> get utxoEntry {
@@ -292,8 +273,6 @@ class __$$ApiUtxoImplCopyWithImpl<$Res>
       _$ApiUtxoImpl _value, $Res Function(_$ApiUtxoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiUtxo
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -351,13 +330,11 @@ class _$ApiUtxoImpl implements _ApiUtxo {
                 other.utxoEntry == utxoEntry));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, address, outpoint, utxoEntry);
 
-  /// Create a copy of ApiUtxo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiUtxoImplCopyWith<_$ApiUtxoImpl> get copyWith =>
@@ -385,11 +362,8 @@ abstract class _ApiUtxo implements ApiUtxo {
   ApiOutpoint get outpoint;
   @override
   ApiUtxoEntry get utxoEntry;
-
-  /// Create a copy of ApiUtxo
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ApiUtxoImplCopyWith<_$ApiUtxoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -401,14 +375,11 @@ ApiOutpoint _$ApiOutpointFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiOutpoint {
   String get transactionId => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int get index => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiOutpoint to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiOutpoint
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiOutpointCopyWith<ApiOutpoint> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -419,7 +390,7 @@ abstract class $ApiOutpointCopyWith<$Res> {
           ApiOutpoint value, $Res Function(ApiOutpoint) then) =
       _$ApiOutpointCopyWithImpl<$Res, ApiOutpoint>;
   @useResult
-  $Res call({String transactionId, int index});
+  $Res call({String transactionId, @_StrictHistoryInt() int index});
 }
 
 /// @nodoc
@@ -432,8 +403,6 @@ class _$ApiOutpointCopyWithImpl<$Res, $Val extends ApiOutpoint>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiOutpoint
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -461,7 +430,7 @@ abstract class _$$OutpointImplCopyWith<$Res>
       __$$OutpointImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String transactionId, int index});
+  $Res call({String transactionId, @_StrictHistoryInt() int index});
 }
 
 /// @nodoc
@@ -472,8 +441,6 @@ class __$$OutpointImplCopyWithImpl<$Res>
       _$OutpointImpl _value, $Res Function(_$OutpointImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiOutpoint
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,10 +461,10 @@ class __$$OutpointImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(converters: [_StrictRestIntConverter()])
+@JsonSerializable()
 class _$OutpointImpl implements _Outpoint {
-  const _$OutpointImpl({required this.transactionId, required this.index});
+  const _$OutpointImpl(
+      {required this.transactionId, @_StrictHistoryInt() required this.index});
 
   factory _$OutpointImpl.fromJson(Map<String, dynamic> json) =>
       _$$OutpointImplFromJson(json);
@@ -505,6 +472,7 @@ class _$OutpointImpl implements _Outpoint {
   @override
   final String transactionId;
   @override
+  @_StrictHistoryInt()
   final int index;
 
   @override
@@ -522,13 +490,11 @@ class _$OutpointImpl implements _Outpoint {
             (identical(other.index, index) || other.index == index));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, transactionId, index);
 
-  /// Create a copy of ApiOutpoint
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$OutpointImplCopyWith<_$OutpointImpl> get copyWith =>
@@ -545,7 +511,7 @@ class _$OutpointImpl implements _Outpoint {
 abstract class _Outpoint implements ApiOutpoint {
   const factory _Outpoint(
       {required final String transactionId,
-      required final int index}) = _$OutpointImpl;
+      @_StrictHistoryInt() required final int index}) = _$OutpointImpl;
 
   factory _Outpoint.fromJson(Map<String, dynamic> json) =
       _$OutpointImpl.fromJson;
@@ -553,12 +519,10 @@ abstract class _Outpoint implements ApiOutpoint {
   @override
   String get transactionId;
   @override
+  @_StrictHistoryInt()
   int get index;
-
-  /// Create a copy of ApiOutpoint
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$OutpointImplCopyWith<_$OutpointImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -574,12 +538,8 @@ mixin _$ApiUtxoEntry {
   BigInt get blockDaaScore => throw _privateConstructorUsedError;
   bool get isCoinbase => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiUtxoEntry to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiUtxoEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiUtxoEntryCopyWith<ApiUtxoEntry> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -609,8 +569,6 @@ class _$ApiUtxoEntryCopyWithImpl<$Res, $Val extends ApiUtxoEntry>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiUtxoEntry
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -639,8 +597,6 @@ class _$ApiUtxoEntryCopyWithImpl<$Res, $Val extends ApiUtxoEntry>
     ) as $Val);
   }
 
-  /// Create a copy of ApiUtxoEntry
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ApiScriptPublicKeyCopyWith<$Res> get scriptPublicKey {
@@ -676,8 +632,6 @@ class __$$ApiUtxoEntryImplCopyWithImpl<$Res>
       _$ApiUtxoEntryImpl _value, $Res Function(_$ApiUtxoEntryImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiUtxoEntry
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -748,14 +702,12 @@ class _$ApiUtxoEntryImpl implements _ApiUtxoEntry {
                 other.isCoinbase == isCoinbase));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, amount, scriptPublicKey, blockDaaScore, isCoinbase);
 
-  /// Create a copy of ApiUtxoEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiUtxoEntryImplCopyWith<_$ApiUtxoEntryImpl> get copyWith =>
@@ -787,11 +739,8 @@ abstract class _ApiUtxoEntry implements ApiUtxoEntry {
   BigInt get blockDaaScore;
   @override
   bool get isCoinbase;
-
-  /// Create a copy of ApiUtxoEntry
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ApiUtxoEntryImplCopyWith<_$ApiUtxoEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -803,14 +752,11 @@ ApiScriptPublicKey _$ApiScriptPublicKeyFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiScriptPublicKey {
   String get scriptPublicKey => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int get version => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiScriptPublicKey to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiScriptPublicKey
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiScriptPublicKeyCopyWith<ApiScriptPublicKey> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -821,7 +767,7 @@ abstract class $ApiScriptPublicKeyCopyWith<$Res> {
           ApiScriptPublicKey value, $Res Function(ApiScriptPublicKey) then) =
       _$ApiScriptPublicKeyCopyWithImpl<$Res, ApiScriptPublicKey>;
   @useResult
-  $Res call({String scriptPublicKey, int version});
+  $Res call({String scriptPublicKey, @_StrictHistoryInt() int version});
 }
 
 /// @nodoc
@@ -834,8 +780,6 @@ class _$ApiScriptPublicKeyCopyWithImpl<$Res, $Val extends ApiScriptPublicKey>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiScriptPublicKey
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -863,7 +807,7 @@ abstract class _$$ApiScriptPublicKeyImplCopyWith<$Res>
       __$$ApiScriptPublicKeyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String scriptPublicKey, int version});
+  $Res call({String scriptPublicKey, @_StrictHistoryInt() int version});
 }
 
 /// @nodoc
@@ -874,8 +818,6 @@ class __$$ApiScriptPublicKeyImplCopyWithImpl<$Res>
       $Res Function(_$ApiScriptPublicKeyImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiScriptPublicKey
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -896,11 +838,10 @@ class __$$ApiScriptPublicKeyImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(converters: [_StrictRestIntConverter()])
+@JsonSerializable()
 class _$ApiScriptPublicKeyImpl implements _ApiScriptPublicKey {
   const _$ApiScriptPublicKeyImpl(
-      {required this.scriptPublicKey, this.version = 0});
+      {required this.scriptPublicKey, @_StrictHistoryInt() this.version = 0});
 
   factory _$ApiScriptPublicKeyImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApiScriptPublicKeyImplFromJson(json);
@@ -909,6 +850,7 @@ class _$ApiScriptPublicKeyImpl implements _ApiScriptPublicKey {
   final String scriptPublicKey;
   @override
   @JsonKey()
+  @_StrictHistoryInt()
   final int version;
 
   @override
@@ -926,13 +868,11 @@ class _$ApiScriptPublicKeyImpl implements _ApiScriptPublicKey {
             (identical(other.version, version) || other.version == version));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, scriptPublicKey, version);
 
-  /// Create a copy of ApiScriptPublicKey
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiScriptPublicKeyImplCopyWith<_$ApiScriptPublicKeyImpl> get copyWith =>
@@ -950,7 +890,7 @@ class _$ApiScriptPublicKeyImpl implements _ApiScriptPublicKey {
 abstract class _ApiScriptPublicKey implements ApiScriptPublicKey {
   const factory _ApiScriptPublicKey(
       {required final String scriptPublicKey,
-      final int version}) = _$ApiScriptPublicKeyImpl;
+      @_StrictHistoryInt() final int version}) = _$ApiScriptPublicKeyImpl;
 
   factory _ApiScriptPublicKey.fromJson(Map<String, dynamic> json) =
       _$ApiScriptPublicKeyImpl.fromJson;
@@ -958,12 +898,10 @@ abstract class _ApiScriptPublicKey implements ApiScriptPublicKey {
   @override
   String get scriptPublicKey;
   @override
+  @_StrictHistoryInt()
   int get version;
-
-  /// Create a copy of ApiScriptPublicKey
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ApiScriptPublicKeyImplCopyWith<_$ApiScriptPublicKeyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -977,12 +915,8 @@ mixin _$ApiTxLink {
   String? get txReceived => throw _privateConstructorUsedError;
   String? get txSpent => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiTxLink to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiTxLink
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiTxLinkCopyWith<ApiTxLink> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1005,8 +939,6 @@ class _$ApiTxLinkCopyWithImpl<$Res, $Val extends ApiTxLink>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiTxLink
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1045,8 +977,6 @@ class __$$ApiTxLinkImplCopyWithImpl<$Res>
       _$ApiTxLinkImpl _value, $Res Function(_$ApiTxLinkImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiTxLink
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1095,13 +1025,11 @@ class _$ApiTxLinkImpl implements _ApiTxLink {
             (identical(other.txSpent, txSpent) || other.txSpent == txSpent));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, txReceived, txSpent);
 
-  /// Create a copy of ApiTxLink
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiTxLinkImplCopyWith<_$ApiTxLinkImpl> get copyWith =>
@@ -1126,11 +1054,8 @@ abstract class _ApiTxLink implements ApiTxLink {
   String? get txReceived;
   @override
   String? get txSpent;
-
-  /// Create a copy of ApiTxLink
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ApiTxLinkImplCopyWith<_$ApiTxLinkImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1142,14 +1067,11 @@ ApiTxId _$ApiTxIdFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiTxId {
   String get transactionId => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int? get blockTime => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiTxId to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiTxId
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiTxIdCopyWith<ApiTxId> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1158,7 +1080,7 @@ abstract class $ApiTxIdCopyWith<$Res> {
   factory $ApiTxIdCopyWith(ApiTxId value, $Res Function(ApiTxId) then) =
       _$ApiTxIdCopyWithImpl<$Res, ApiTxId>;
   @useResult
-  $Res call({String transactionId, int? blockTime});
+  $Res call({String transactionId, @_StrictHistoryInt() int? blockTime});
 }
 
 /// @nodoc
@@ -1171,8 +1093,6 @@ class _$ApiTxIdCopyWithImpl<$Res, $Val extends ApiTxId>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiTxId
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1199,7 +1119,7 @@ abstract class _$$ApiTxIdImplCopyWith<$Res> implements $ApiTxIdCopyWith<$Res> {
       __$$ApiTxIdImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String transactionId, int? blockTime});
+  $Res call({String transactionId, @_StrictHistoryInt() int? blockTime});
 }
 
 /// @nodoc
@@ -1210,8 +1130,6 @@ class __$$ApiTxIdImplCopyWithImpl<$Res>
       _$ApiTxIdImpl _value, $Res Function(_$ApiTxIdImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiTxId
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1233,10 +1151,10 @@ class __$$ApiTxIdImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(
-    fieldRename: FieldRename.snake, converters: [_StrictRestIntConverter()])
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$ApiTxIdImpl implements _ApiTxId {
-  const _$ApiTxIdImpl({required this.transactionId, this.blockTime});
+  const _$ApiTxIdImpl(
+      {required this.transactionId, @_StrictHistoryInt() this.blockTime});
 
   factory _$ApiTxIdImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApiTxIdImplFromJson(json);
@@ -1244,6 +1162,7 @@ class _$ApiTxIdImpl implements _ApiTxId {
   @override
   final String transactionId;
   @override
+  @_StrictHistoryInt()
   final int? blockTime;
 
   @override
@@ -1262,13 +1181,11 @@ class _$ApiTxIdImpl implements _ApiTxId {
                 other.blockTime == blockTime));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, transactionId, blockTime);
 
-  /// Create a copy of ApiTxId
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiTxIdImplCopyWith<_$ApiTxIdImpl> get copyWith =>
@@ -1285,19 +1202,17 @@ class _$ApiTxIdImpl implements _ApiTxId {
 abstract class _ApiTxId implements ApiTxId {
   const factory _ApiTxId(
       {required final String transactionId,
-      final int? blockTime}) = _$ApiTxIdImpl;
+      @_StrictHistoryInt() final int? blockTime}) = _$ApiTxIdImpl;
 
   factory _ApiTxId.fromJson(Map<String, dynamic> json) = _$ApiTxIdImpl.fromJson;
 
   @override
   String get transactionId;
   @override
+  @_StrictHistoryInt()
   int? get blockTime;
-
-  /// Create a copy of ApiTxId
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ApiTxIdImplCopyWith<_$ApiTxIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1309,23 +1224,23 @@ ApiTxInput _$ApiTxInputFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiTxInput {
   String get transactionId => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int get index => throw _privateConstructorUsedError;
   String get previousOutpointHash => throw _privateConstructorUsedError;
   BigInt get previousOutpointIndex => throw _privateConstructorUsedError;
   String get signatureScript =>
-      throw _privateConstructorUsedError; // REST v1 inputs use compute_budget and return null for sig_op_count.
-// Preserve the absent legacy value rather than inventing a zero count.
+      throw _privateConstructorUsedError; // V1 replaces the legacy signature count with an explicit compute budget.
+// Preserve absent fields; this history DTO is not a signing transaction.
+  @JsonKey(fromJson: _historySigOpCountFromJson)
   BigInt? get sigOpCount => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _historyUint16FromJson)
   int? get computeBudget => throw _privateConstructorUsedError; // new fields
   String? get previousOutpointAddress => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int? get previousOutpointAmount => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiTxInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiTxInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiTxInputCopyWith<ApiTxInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1338,14 +1253,14 @@ abstract class $ApiTxInputCopyWith<$Res> {
   @useResult
   $Res call(
       {String transactionId,
-      int index,
+      @_StrictHistoryInt() int index,
       String previousOutpointHash,
       BigInt previousOutpointIndex,
       String signatureScript,
-      BigInt? sigOpCount,
-      int? computeBudget,
+      @JsonKey(fromJson: _historySigOpCountFromJson) BigInt? sigOpCount,
+      @JsonKey(fromJson: _historyUint16FromJson) int? computeBudget,
       String? previousOutpointAddress,
-      int? previousOutpointAmount});
+      @_StrictHistoryInt() int? previousOutpointAmount});
 }
 
 /// @nodoc
@@ -1358,8 +1273,6 @@ class _$ApiTxInputCopyWithImpl<$Res, $Val extends ApiTxInput>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiTxInput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1424,14 +1337,14 @@ abstract class _$$ApiTxInputImplCopyWith<$Res>
   @useResult
   $Res call(
       {String transactionId,
-      int index,
+      @_StrictHistoryInt() int index,
       String previousOutpointHash,
       BigInt previousOutpointIndex,
       String signatureScript,
-      BigInt? sigOpCount,
-      int? computeBudget,
+      @JsonKey(fromJson: _historySigOpCountFromJson) BigInt? sigOpCount,
+      @JsonKey(fromJson: _historyUint16FromJson) int? computeBudget,
       String? previousOutpointAddress,
-      int? previousOutpointAmount});
+      @_StrictHistoryInt() int? previousOutpointAmount});
 }
 
 /// @nodoc
@@ -1442,8 +1355,6 @@ class __$$ApiTxInputImplCopyWithImpl<$Res>
       _$ApiTxInputImpl _value, $Res Function(_$ApiTxInputImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiTxInput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1500,19 +1411,18 @@ class __$$ApiTxInputImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(
-    fieldRename: FieldRename.snake, converters: [_StrictRestIntConverter()])
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$ApiTxInputImpl implements _ApiTxInput {
   const _$ApiTxInputImpl(
       {required this.transactionId,
-      required this.index,
+      @_StrictHistoryInt() required this.index,
       required this.previousOutpointHash,
       required this.previousOutpointIndex,
       required this.signatureScript,
-      required this.sigOpCount,
-      this.computeBudget,
+      @JsonKey(fromJson: _historySigOpCountFromJson) required this.sigOpCount,
+      @JsonKey(fromJson: _historyUint16FromJson) this.computeBudget,
       this.previousOutpointAddress,
-      this.previousOutpointAmount});
+      @_StrictHistoryInt() this.previousOutpointAmount});
 
   factory _$ApiTxInputImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApiTxInputImplFromJson(json);
@@ -1520,6 +1430,7 @@ class _$ApiTxInputImpl implements _ApiTxInput {
   @override
   final String transactionId;
   @override
+  @_StrictHistoryInt()
   final int index;
   @override
   final String previousOutpointHash;
@@ -1527,16 +1438,19 @@ class _$ApiTxInputImpl implements _ApiTxInput {
   final BigInt previousOutpointIndex;
   @override
   final String signatureScript;
-// REST v1 inputs use compute_budget and return null for sig_op_count.
-// Preserve the absent legacy value rather than inventing a zero count.
+// V1 replaces the legacy signature count with an explicit compute budget.
+// Preserve absent fields; this history DTO is not a signing transaction.
   @override
+  @JsonKey(fromJson: _historySigOpCountFromJson)
   final BigInt? sigOpCount;
   @override
+  @JsonKey(fromJson: _historyUint16FromJson)
   final int? computeBudget;
 // new fields
   @override
   final String? previousOutpointAddress;
   @override
+  @_StrictHistoryInt()
   final int? previousOutpointAmount;
 
   @override
@@ -1569,7 +1483,7 @@ class _$ApiTxInputImpl implements _ApiTxInput {
                 other.previousOutpointAmount == previousOutpointAmount));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1583,9 +1497,7 @@ class _$ApiTxInputImpl implements _ApiTxInput {
       previousOutpointAddress,
       previousOutpointAmount);
 
-  /// Create a copy of ApiTxInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiTxInputImplCopyWith<_$ApiTxInputImpl> get copyWith =>
@@ -1601,15 +1513,17 @@ class _$ApiTxInputImpl implements _ApiTxInput {
 
 abstract class _ApiTxInput implements ApiTxInput {
   const factory _ApiTxInput(
-      {required final String transactionId,
-      required final int index,
-      required final String previousOutpointHash,
-      required final BigInt previousOutpointIndex,
-      required final String signatureScript,
-      required final BigInt? sigOpCount,
-      final int? computeBudget,
-      final String? previousOutpointAddress,
-      final int? previousOutpointAmount}) = _$ApiTxInputImpl;
+          {required final String transactionId,
+          @_StrictHistoryInt() required final int index,
+          required final String previousOutpointHash,
+          required final BigInt previousOutpointIndex,
+          required final String signatureScript,
+          @JsonKey(fromJson: _historySigOpCountFromJson)
+          required final BigInt? sigOpCount,
+          @JsonKey(fromJson: _historyUint16FromJson) final int? computeBudget,
+          final String? previousOutpointAddress,
+          @_StrictHistoryInt() final int? previousOutpointAmount}) =
+      _$ApiTxInputImpl;
 
   factory _ApiTxInput.fromJson(Map<String, dynamic> json) =
       _$ApiTxInputImpl.fromJson;
@@ -1617,28 +1531,28 @@ abstract class _ApiTxInput implements ApiTxInput {
   @override
   String get transactionId;
   @override
+  @_StrictHistoryInt()
   int get index;
   @override
   String get previousOutpointHash;
   @override
   BigInt get previousOutpointIndex;
   @override
-  String
-      get signatureScript; // REST v1 inputs use compute_budget and return null for sig_op_count.
-// Preserve the absent legacy value rather than inventing a zero count.
-  @override
+  String get signatureScript;
+  @override // V1 replaces the legacy signature count with an explicit compute budget.
+// Preserve absent fields; this history DTO is not a signing transaction.
+  @JsonKey(fromJson: _historySigOpCountFromJson)
   BigInt? get sigOpCount;
   @override
-  int? get computeBudget; // new fields
-  @override
+  @JsonKey(fromJson: _historyUint16FromJson)
+  int? get computeBudget;
+  @override // new fields
   String? get previousOutpointAddress;
   @override
+  @_StrictHistoryInt()
   int? get previousOutpointAmount;
-
-  /// Create a copy of ApiTxInput
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ApiTxInputImplCopyWith<_$ApiTxInputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1650,18 +1564,16 @@ ApiTxOutput _$ApiTxOutputFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiTxOutput {
   String get transactionId => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int get index => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int get amount => throw _privateConstructorUsedError;
   String get scriptPublicKey => throw _privateConstructorUsedError;
   String get scriptPublicKeyAddress => throw _privateConstructorUsedError;
   String get scriptPublicKeyType => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiTxOutput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiTxOutput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiTxOutputCopyWith<ApiTxOutput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1674,8 +1586,8 @@ abstract class $ApiTxOutputCopyWith<$Res> {
   @useResult
   $Res call(
       {String transactionId,
-      int index,
-      int amount,
+      @_StrictHistoryInt() int index,
+      @_StrictHistoryInt() int amount,
       String scriptPublicKey,
       String scriptPublicKeyAddress,
       String scriptPublicKeyType});
@@ -1691,8 +1603,6 @@ class _$ApiTxOutputCopyWithImpl<$Res, $Val extends ApiTxOutput>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiTxOutput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1742,8 +1652,8 @@ abstract class _$$ApiTxOutputImplCopyWith<$Res>
   @useResult
   $Res call(
       {String transactionId,
-      int index,
-      int amount,
+      @_StrictHistoryInt() int index,
+      @_StrictHistoryInt() int amount,
       String scriptPublicKey,
       String scriptPublicKeyAddress,
       String scriptPublicKeyType});
@@ -1757,8 +1667,6 @@ class __$$ApiTxOutputImplCopyWithImpl<$Res>
       _$ApiTxOutputImpl _value, $Res Function(_$ApiTxOutputImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiTxOutput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1800,13 +1708,12 @@ class __$$ApiTxOutputImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(
-    fieldRename: FieldRename.snake, converters: [_StrictRestIntConverter()])
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$ApiTxOutputImpl implements _ApiTxOutput {
   const _$ApiTxOutputImpl(
       {required this.transactionId,
-      required this.index,
-      required this.amount,
+      @_StrictHistoryInt() required this.index,
+      @_StrictHistoryInt() required this.amount,
       required this.scriptPublicKey,
       required this.scriptPublicKeyAddress,
       required this.scriptPublicKeyType});
@@ -1817,8 +1724,10 @@ class _$ApiTxOutputImpl implements _ApiTxOutput {
   @override
   final String transactionId;
   @override
+  @_StrictHistoryInt()
   final int index;
   @override
+  @_StrictHistoryInt()
   final int amount;
   @override
   final String scriptPublicKey;
@@ -1849,14 +1758,12 @@ class _$ApiTxOutputImpl implements _ApiTxOutput {
                 other.scriptPublicKeyType == scriptPublicKeyType));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, transactionId, index, amount,
       scriptPublicKey, scriptPublicKeyAddress, scriptPublicKeyType);
 
-  /// Create a copy of ApiTxOutput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiTxOutputImplCopyWith<_$ApiTxOutputImpl> get copyWith =>
@@ -1873,8 +1780,8 @@ class _$ApiTxOutputImpl implements _ApiTxOutput {
 abstract class _ApiTxOutput implements ApiTxOutput {
   const factory _ApiTxOutput(
       {required final String transactionId,
-      required final int index,
-      required final int amount,
+      @_StrictHistoryInt() required final int index,
+      @_StrictHistoryInt() required final int amount,
       required final String scriptPublicKey,
       required final String scriptPublicKeyAddress,
       required final String scriptPublicKeyType}) = _$ApiTxOutputImpl;
@@ -1885,8 +1792,10 @@ abstract class _ApiTxOutput implements ApiTxOutput {
   @override
   String get transactionId;
   @override
+  @_StrictHistoryInt()
   int get index;
   @override
+  @_StrictHistoryInt()
   int get amount;
   @override
   String get scriptPublicKey;
@@ -1894,11 +1803,8 @@ abstract class _ApiTxOutput implements ApiTxOutput {
   String get scriptPublicKeyAddress;
   @override
   String get scriptPublicKeyType;
-
-  /// Create a copy of ApiTxOutput
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ApiTxOutputImplCopyWith<_$ApiTxOutputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1910,22 +1816,21 @@ ApiTransaction _$ApiTransactionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiTransaction {
   String? get subnetworkId => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _historyUint16FromJson)
   int? get version => throw _privateConstructorUsedError;
   String get transactionId => throw _privateConstructorUsedError;
   List<String> get blockHash => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int get blockTime => throw _privateConstructorUsedError;
   bool get isAccepted => throw _privateConstructorUsedError;
   String? get acceptingBlockHash => throw _privateConstructorUsedError;
+  @_StrictHistoryInt()
   int? get acceptingBlockBlueScore => throw _privateConstructorUsedError;
   List<ApiTxInput> get inputs => throw _privateConstructorUsedError;
   List<ApiTxOutput> get outputs => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiTransaction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ApiTransaction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ApiTransactionCopyWith<ApiTransaction> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1938,13 +1843,13 @@ abstract class $ApiTransactionCopyWith<$Res> {
   @useResult
   $Res call(
       {String? subnetworkId,
-      int? version,
+      @JsonKey(fromJson: _historyUint16FromJson) int? version,
       String transactionId,
       List<String> blockHash,
-      int blockTime,
+      @_StrictHistoryInt() int blockTime,
       bool isAccepted,
       String? acceptingBlockHash,
-      int? acceptingBlockBlueScore,
+      @_StrictHistoryInt() int? acceptingBlockBlueScore,
       List<ApiTxInput> inputs,
       List<ApiTxOutput> outputs});
 }
@@ -1959,8 +1864,6 @@ class _$ApiTransactionCopyWithImpl<$Res, $Val extends ApiTransaction>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ApiTransaction
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2030,13 +1933,13 @@ abstract class _$$TransactionImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? subnetworkId,
-      int? version,
+      @JsonKey(fromJson: _historyUint16FromJson) int? version,
       String transactionId,
       List<String> blockHash,
-      int blockTime,
+      @_StrictHistoryInt() int blockTime,
       bool isAccepted,
       String? acceptingBlockHash,
-      int? acceptingBlockBlueScore,
+      @_StrictHistoryInt() int? acceptingBlockBlueScore,
       List<ApiTxInput> inputs,
       List<ApiTxOutput> outputs});
 }
@@ -2049,8 +1952,6 @@ class __$$TransactionImplCopyWithImpl<$Res>
       _$TransactionImpl _value, $Res Function(_$TransactionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ApiTransaction
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2112,18 +2013,17 @@ class __$$TransactionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(
-    fieldRename: FieldRename.snake, converters: [_StrictRestIntConverter()])
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$TransactionImpl extends _Transaction {
   _$TransactionImpl(
       {this.subnetworkId,
-      this.version,
+      @JsonKey(fromJson: _historyUint16FromJson) this.version,
       required this.transactionId,
       final List<String> blockHash = const [],
-      required this.blockTime,
+      @_StrictHistoryInt() required this.blockTime,
       required this.isAccepted,
       this.acceptingBlockHash,
-      this.acceptingBlockBlueScore,
+      @_StrictHistoryInt() this.acceptingBlockBlueScore,
       final List<ApiTxInput> inputs = const [],
       final List<ApiTxOutput> outputs = const []})
       : _blockHash = blockHash,
@@ -2137,6 +2037,7 @@ class _$TransactionImpl extends _Transaction {
   @override
   final String? subnetworkId;
   @override
+  @JsonKey(fromJson: _historyUint16FromJson)
   final int? version;
   @override
   final String transactionId;
@@ -2150,12 +2051,14 @@ class _$TransactionImpl extends _Transaction {
   }
 
   @override
+  @_StrictHistoryInt()
   final int blockTime;
   @override
   final bool isAccepted;
   @override
   final String? acceptingBlockHash;
   @override
+  @_StrictHistoryInt()
   final int? acceptingBlockBlueScore;
   final List<ApiTxInput> _inputs;
   @override
@@ -2205,7 +2108,7 @@ class _$TransactionImpl extends _Transaction {
             const DeepCollectionEquality().equals(other._outputs, _outputs));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -2220,9 +2123,7 @@ class _$TransactionImpl extends _Transaction {
       const DeepCollectionEquality().hash(_inputs),
       const DeepCollectionEquality().hash(_outputs));
 
-  /// Create a copy of ApiTransaction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
@@ -2239,13 +2140,13 @@ class _$TransactionImpl extends _Transaction {
 abstract class _Transaction extends ApiTransaction {
   factory _Transaction(
       {final String? subnetworkId,
-      final int? version,
+      @JsonKey(fromJson: _historyUint16FromJson) final int? version,
       required final String transactionId,
       final List<String> blockHash,
-      required final int blockTime,
+      @_StrictHistoryInt() required final int blockTime,
       required final bool isAccepted,
       final String? acceptingBlockHash,
-      final int? acceptingBlockBlueScore,
+      @_StrictHistoryInt() final int? acceptingBlockBlueScore,
       final List<ApiTxInput> inputs,
       final List<ApiTxOutput> outputs}) = _$TransactionImpl;
   _Transaction._() : super._();
@@ -2256,28 +2157,28 @@ abstract class _Transaction extends ApiTransaction {
   @override
   String? get subnetworkId;
   @override
+  @JsonKey(fromJson: _historyUint16FromJson)
   int? get version;
   @override
   String get transactionId;
   @override
   List<String> get blockHash;
   @override
+  @_StrictHistoryInt()
   int get blockTime;
   @override
   bool get isAccepted;
   @override
   String? get acceptingBlockHash;
   @override
+  @_StrictHistoryInt()
   int? get acceptingBlockBlueScore;
   @override
   List<ApiTxInput> get inputs;
   @override
   List<ApiTxOutput> get outputs;
-
-  /// Create a copy of ApiTransaction
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
