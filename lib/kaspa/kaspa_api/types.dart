@@ -136,6 +136,7 @@ class ApiTransaction with _$ApiTransaction {
   factory ApiTransaction({
     String? subnetworkId,
     @JsonKey(fromJson: _historyUint16FromJson) int? version,
+    String? payload,
     required String transactionId,
     @Default([]) List<String> blockHash,
     @_StrictHistoryInt() required int blockTime,
@@ -153,6 +154,7 @@ class ApiTransaction with _$ApiTransaction {
     return ApiTransaction(
       transactionId: tx.verboseData.transactionId,
       version: tx.version.toInt(),
+      payload: tx.hasPayload() ? tx.payload : null,
       blockTime: tx.verboseData.blockTime.toInt(),
       isAccepted: false,
       inputs: tx.inputs.mapIndexed((index, e) {

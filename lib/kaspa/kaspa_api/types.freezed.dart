@@ -1818,6 +1818,7 @@ mixin _$ApiTransaction {
   String? get subnetworkId => throw _privateConstructorUsedError;
   @JsonKey(fromJson: _historyUint16FromJson)
   int? get version => throw _privateConstructorUsedError;
+  String? get payload => throw _privateConstructorUsedError;
   String get transactionId => throw _privateConstructorUsedError;
   List<String> get blockHash => throw _privateConstructorUsedError;
   @_StrictHistoryInt()
@@ -1844,6 +1845,7 @@ abstract class $ApiTransactionCopyWith<$Res> {
   $Res call(
       {String? subnetworkId,
       @JsonKey(fromJson: _historyUint16FromJson) int? version,
+      String? payload,
       String transactionId,
       List<String> blockHash,
       @_StrictHistoryInt() int blockTime,
@@ -1869,6 +1871,7 @@ class _$ApiTransactionCopyWithImpl<$Res, $Val extends ApiTransaction>
   $Res call({
     Object? subnetworkId = freezed,
     Object? version = freezed,
+    Object? payload = freezed,
     Object? transactionId = null,
     Object? blockHash = null,
     Object? blockTime = null,
@@ -1887,6 +1890,10 @@ class _$ApiTransactionCopyWithImpl<$Res, $Val extends ApiTransaction>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as int?,
+      payload: freezed == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String?,
       transactionId: null == transactionId
           ? _value.transactionId
           : transactionId // ignore: cast_nullable_to_non_nullable
@@ -1934,6 +1941,7 @@ abstract class _$$TransactionImplCopyWith<$Res>
   $Res call(
       {String? subnetworkId,
       @JsonKey(fromJson: _historyUint16FromJson) int? version,
+      String? payload,
       String transactionId,
       List<String> blockHash,
       @_StrictHistoryInt() int blockTime,
@@ -1957,6 +1965,7 @@ class __$$TransactionImplCopyWithImpl<$Res>
   $Res call({
     Object? subnetworkId = freezed,
     Object? version = freezed,
+    Object? payload = freezed,
     Object? transactionId = null,
     Object? blockHash = null,
     Object? blockTime = null,
@@ -1975,6 +1984,10 @@ class __$$TransactionImplCopyWithImpl<$Res>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as int?,
+      payload: freezed == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String?,
       transactionId: null == transactionId
           ? _value.transactionId
           : transactionId // ignore: cast_nullable_to_non_nullable
@@ -2018,6 +2031,7 @@ class _$TransactionImpl extends _Transaction {
   _$TransactionImpl(
       {this.subnetworkId,
       @JsonKey(fromJson: _historyUint16FromJson) this.version,
+      this.payload,
       required this.transactionId,
       final List<String> blockHash = const [],
       @_StrictHistoryInt() required this.blockTime,
@@ -2039,6 +2053,8 @@ class _$TransactionImpl extends _Transaction {
   @override
   @JsonKey(fromJson: _historyUint16FromJson)
   final int? version;
+  @override
+  final String? payload;
   @override
   final String transactionId;
   final List<String> _blockHash;
@@ -2080,7 +2096,7 @@ class _$TransactionImpl extends _Transaction {
 
   @override
   String toString() {
-    return 'ApiTransaction(subnetworkId: $subnetworkId, version: $version, transactionId: $transactionId, blockHash: $blockHash, blockTime: $blockTime, isAccepted: $isAccepted, acceptingBlockHash: $acceptingBlockHash, acceptingBlockBlueScore: $acceptingBlockBlueScore, inputs: $inputs, outputs: $outputs)';
+    return 'ApiTransaction(subnetworkId: $subnetworkId, version: $version, payload: $payload, transactionId: $transactionId, blockHash: $blockHash, blockTime: $blockTime, isAccepted: $isAccepted, acceptingBlockHash: $acceptingBlockHash, acceptingBlockBlueScore: $acceptingBlockBlueScore, inputs: $inputs, outputs: $outputs)';
   }
 
   @override
@@ -2091,6 +2107,7 @@ class _$TransactionImpl extends _Transaction {
             (identical(other.subnetworkId, subnetworkId) ||
                 other.subnetworkId == subnetworkId) &&
             (identical(other.version, version) || other.version == version) &&
+            (identical(other.payload, payload) || other.payload == payload) &&
             (identical(other.transactionId, transactionId) ||
                 other.transactionId == transactionId) &&
             const DeepCollectionEquality()
@@ -2114,6 +2131,7 @@ class _$TransactionImpl extends _Transaction {
       runtimeType,
       subnetworkId,
       version,
+      payload,
       transactionId,
       const DeepCollectionEquality().hash(_blockHash),
       blockTime,
@@ -2141,6 +2159,7 @@ abstract class _Transaction extends ApiTransaction {
   factory _Transaction(
       {final String? subnetworkId,
       @JsonKey(fromJson: _historyUint16FromJson) final int? version,
+      final String? payload,
       required final String transactionId,
       final List<String> blockHash,
       @_StrictHistoryInt() required final int blockTime,
@@ -2159,6 +2178,8 @@ abstract class _Transaction extends ApiTransaction {
   @override
   @JsonKey(fromJson: _historyUint16FromJson)
   int? get version;
+  @override
+  String? get payload;
   @override
   String get transactionId;
   @override

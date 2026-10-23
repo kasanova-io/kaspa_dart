@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kaspa_dart/kaspa/kaspa_api/types.dart';
+import 'package:kaspa_dart/kaspa/grpc/rpc.pb.dart';
 
 void main() {
   final raw = (jsonDecode(
@@ -22,6 +23,7 @@ void main() {
       final tx = decoded[i];
       expect(tx.transactionId, original['transaction_id']);
       expect(tx.version, original['version']);
+      expect(tx.payload, original['payload']);
       expect(ApiTransaction.fromJson(tx.toJson()), tx);
       expect(tx.inputs, hasLength((original['inputs'] as List).length));
       expect(tx.outputs, hasLength((original['outputs'] as List).length));
@@ -40,6 +42,30 @@ void main() {
             jsonDecode(jsonEncode(tx.toJson())) as Map<String, dynamic>,
           ),
           tx);
+    }
+  });
+
+  test('history payload preserves absent, null, empty and exact wire bytes',
+      () {
+    for (final payload in <String?>[null, '', '4b4f423104', '4B4F423104']) {
+      final json = {...raw.first, 'payload': payload};
+      final tx = ApiTransaction.fromJson(json);
+      expect(tx.payload, payload);
+      expect(ApiTransaction.fromJson(tx.toJson()).payload, payload);
+      expect(tx.copyWith().payload, payload);
+    }
+    final absent = Map<String, dynamic>.from(raw.first)..remove('payload');
+    expect(ApiTransaction.fromJson(absent).payload, isNull);
+  });
+
+  test('RPC history preserves payload presence rather than protobuf defaults',
+      () {
+    expect(ApiTransaction.fromRpc(RpcTransaction(version: 1)).payload, isNull);
+    for (final payload in ['', '4b4f423104']) {
+      expect(
+          ApiTransaction.fromRpc(RpcTransaction(version: 1, payload: payload))
+              .payload,
+          payload);
     }
   });
 

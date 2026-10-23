@@ -192,6 +192,7 @@ Map<String, dynamic> _$$ApiTxOutputImplToJson(_$ApiTxOutputImpl instance) =>
 _$TransactionImpl _$$TransactionImplFromJson(Map json) => _$TransactionImpl(
       subnetworkId: json['subnetwork_id'] as String?,
       version: _historyUint16FromJson(json['version']),
+      payload: json['payload'] as String?,
       transactionId: json['transaction_id'] as String,
       blockHash: (json['block_hash'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -227,6 +228,7 @@ Map<String, dynamic> _$$TransactionImplToJson(_$TransactionImpl instance) {
 
   writeNotNull('subnetwork_id', instance.subnetworkId);
   writeNotNull('version', instance.version);
+  writeNotNull('payload', instance.payload);
   val['transaction_id'] = instance.transactionId;
   val['block_hash'] = instance.blockHash;
   val['block_time'] = const _StrictHistoryInt().toJson(instance.blockTime);
