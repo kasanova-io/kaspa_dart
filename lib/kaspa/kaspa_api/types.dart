@@ -104,6 +104,8 @@ class ApiTxInput with _$ApiTxInput {
     // Preserve absent fields; this history DTO is not a signing transaction.
     @JsonKey(fromJson: _historySigOpCountFromJson) required BigInt? sigOpCount,
     @JsonKey(fromJson: _historyUint16FromJson) int? computeBudget,
+    @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+    BigInt? sequence,
     // new fields
     String? previousOutpointAddress,
     @_StrictHistoryInt() int? previousOutpointAmount,
@@ -123,6 +125,9 @@ class ApiTxOutput with _$ApiTxOutput {
     required String scriptPublicKey,
     required String scriptPublicKeyAddress,
     required String scriptPublicKeyType,
+    @JsonKey(fromJson: _historyUint16FromJson) int? scriptPublicKeyVersion,
+    String? covenantId,
+    @JsonKey(fromJson: _historyUint16FromJson) int? covenantAuthorizingInput,
   }) = _ApiTxOutput;
 
   factory ApiTxOutput.fromJson(Map<String, dynamic> json) =>
@@ -137,6 +142,10 @@ class ApiTransaction with _$ApiTransaction {
     String? subnetworkId,
     @JsonKey(fromJson: _historyUint16FromJson) int? version,
     String? payload,
+    @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+    BigInt? lockTime,
+    @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+    BigInt? gas,
     required String transactionId,
     @Default([]) List<String> blockHash,
     @_StrictHistoryInt() required int blockTime,
@@ -208,6 +217,30 @@ int? _historyUint16FromJson(Object? value) {
   }
   return value;
 }
+
+// Optional identity fields must survive the REST/cache round trip without a
+// floating-point conversion or inventing zero for fields omitted by explorers.
+BigInt? _historyUint64FromJson(Object? value) {
+  if (value == null) return null;
+  final String encoded;
+  if (value is String) {
+    encoded = value;
+  } else if (value is int && value >= 0 && value <= 9007199254740991) {
+    encoded = value.toString();
+  } else {
+    throw const FormatException('History identity integer must be exact');
+  }
+  if (encoded.length > 20 || !RegExp(r'^(0|[1-9][0-9]*)$').hasMatch(encoded)) {
+    throw const FormatException('History identity integer must be uint64');
+  }
+  final result = BigInt.parse(encoded);
+  if (result >= (BigInt.one << 64)) {
+    throw const FormatException('History identity integer is outside uint64');
+  }
+  return result;
+}
+
+String? _historyUint64ToJson(BigInt? value) => value?.toString();
 
 // Keep the existing strict integer contract across serializer versions.
 class _StrictHistoryInt implements JsonConverter<int, Object> {

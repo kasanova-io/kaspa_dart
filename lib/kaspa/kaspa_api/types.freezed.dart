@@ -1234,7 +1234,9 @@ mixin _$ApiTxInput {
   @JsonKey(fromJson: _historySigOpCountFromJson)
   BigInt? get sigOpCount => throw _privateConstructorUsedError;
   @JsonKey(fromJson: _historyUint16FromJson)
-  int? get computeBudget => throw _privateConstructorUsedError; // new fields
+  int? get computeBudget => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  BigInt? get sequence => throw _privateConstructorUsedError; // new fields
   String? get previousOutpointAddress => throw _privateConstructorUsedError;
   @_StrictHistoryInt()
   int? get previousOutpointAmount => throw _privateConstructorUsedError;
@@ -1259,6 +1261,8 @@ abstract class $ApiTxInputCopyWith<$Res> {
       String signatureScript,
       @JsonKey(fromJson: _historySigOpCountFromJson) BigInt? sigOpCount,
       @JsonKey(fromJson: _historyUint16FromJson) int? computeBudget,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      BigInt? sequence,
       String? previousOutpointAddress,
       @_StrictHistoryInt() int? previousOutpointAmount});
 }
@@ -1283,6 +1287,7 @@ class _$ApiTxInputCopyWithImpl<$Res, $Val extends ApiTxInput>
     Object? signatureScript = null,
     Object? sigOpCount = freezed,
     Object? computeBudget = freezed,
+    Object? sequence = freezed,
     Object? previousOutpointAddress = freezed,
     Object? previousOutpointAmount = freezed,
   }) {
@@ -1315,6 +1320,10 @@ class _$ApiTxInputCopyWithImpl<$Res, $Val extends ApiTxInput>
           ? _value.computeBudget
           : computeBudget // ignore: cast_nullable_to_non_nullable
               as int?,
+      sequence: freezed == sequence
+          ? _value.sequence
+          : sequence // ignore: cast_nullable_to_non_nullable
+              as BigInt?,
       previousOutpointAddress: freezed == previousOutpointAddress
           ? _value.previousOutpointAddress
           : previousOutpointAddress // ignore: cast_nullable_to_non_nullable
@@ -1343,6 +1352,8 @@ abstract class _$$ApiTxInputImplCopyWith<$Res>
       String signatureScript,
       @JsonKey(fromJson: _historySigOpCountFromJson) BigInt? sigOpCount,
       @JsonKey(fromJson: _historyUint16FromJson) int? computeBudget,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      BigInt? sequence,
       String? previousOutpointAddress,
       @_StrictHistoryInt() int? previousOutpointAmount});
 }
@@ -1365,6 +1376,7 @@ class __$$ApiTxInputImplCopyWithImpl<$Res>
     Object? signatureScript = null,
     Object? sigOpCount = freezed,
     Object? computeBudget = freezed,
+    Object? sequence = freezed,
     Object? previousOutpointAddress = freezed,
     Object? previousOutpointAmount = freezed,
   }) {
@@ -1397,6 +1409,10 @@ class __$$ApiTxInputImplCopyWithImpl<$Res>
           ? _value.computeBudget
           : computeBudget // ignore: cast_nullable_to_non_nullable
               as int?,
+      sequence: freezed == sequence
+          ? _value.sequence
+          : sequence // ignore: cast_nullable_to_non_nullable
+              as BigInt?,
       previousOutpointAddress: freezed == previousOutpointAddress
           ? _value.previousOutpointAddress
           : previousOutpointAddress // ignore: cast_nullable_to_non_nullable
@@ -1421,6 +1437,8 @@ class _$ApiTxInputImpl implements _ApiTxInput {
       required this.signatureScript,
       @JsonKey(fromJson: _historySigOpCountFromJson) required this.sigOpCount,
       @JsonKey(fromJson: _historyUint16FromJson) this.computeBudget,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      this.sequence,
       this.previousOutpointAddress,
       @_StrictHistoryInt() this.previousOutpointAmount});
 
@@ -1446,6 +1464,9 @@ class _$ApiTxInputImpl implements _ApiTxInput {
   @override
   @JsonKey(fromJson: _historyUint16FromJson)
   final int? computeBudget;
+  @override
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  final BigInt? sequence;
 // new fields
   @override
   final String? previousOutpointAddress;
@@ -1455,7 +1476,7 @@ class _$ApiTxInputImpl implements _ApiTxInput {
 
   @override
   String toString() {
-    return 'ApiTxInput(transactionId: $transactionId, index: $index, previousOutpointHash: $previousOutpointHash, previousOutpointIndex: $previousOutpointIndex, signatureScript: $signatureScript, sigOpCount: $sigOpCount, computeBudget: $computeBudget, previousOutpointAddress: $previousOutpointAddress, previousOutpointAmount: $previousOutpointAmount)';
+    return 'ApiTxInput(transactionId: $transactionId, index: $index, previousOutpointHash: $previousOutpointHash, previousOutpointIndex: $previousOutpointIndex, signatureScript: $signatureScript, sigOpCount: $sigOpCount, computeBudget: $computeBudget, sequence: $sequence, previousOutpointAddress: $previousOutpointAddress, previousOutpointAmount: $previousOutpointAmount)';
   }
 
   @override
@@ -1476,6 +1497,8 @@ class _$ApiTxInputImpl implements _ApiTxInput {
                 other.sigOpCount == sigOpCount) &&
             (identical(other.computeBudget, computeBudget) ||
                 other.computeBudget == computeBudget) &&
+            (identical(other.sequence, sequence) ||
+                other.sequence == sequence) &&
             (identical(
                     other.previousOutpointAddress, previousOutpointAddress) ||
                 other.previousOutpointAddress == previousOutpointAddress) &&
@@ -1494,6 +1517,7 @@ class _$ApiTxInputImpl implements _ApiTxInput {
       signatureScript,
       sigOpCount,
       computeBudget,
+      sequence,
       previousOutpointAddress,
       previousOutpointAmount);
 
@@ -1513,17 +1537,19 @@ class _$ApiTxInputImpl implements _ApiTxInput {
 
 abstract class _ApiTxInput implements ApiTxInput {
   const factory _ApiTxInput(
-          {required final String transactionId,
-          @_StrictHistoryInt() required final int index,
-          required final String previousOutpointHash,
-          required final BigInt previousOutpointIndex,
-          required final String signatureScript,
-          @JsonKey(fromJson: _historySigOpCountFromJson)
-          required final BigInt? sigOpCount,
-          @JsonKey(fromJson: _historyUint16FromJson) final int? computeBudget,
-          final String? previousOutpointAddress,
-          @_StrictHistoryInt() final int? previousOutpointAmount}) =
-      _$ApiTxInputImpl;
+      {required final String transactionId,
+      @_StrictHistoryInt() required final int index,
+      required final String previousOutpointHash,
+      required final BigInt previousOutpointIndex,
+      required final String signatureScript,
+      @JsonKey(fromJson: _historySigOpCountFromJson)
+      required final BigInt? sigOpCount,
+      @JsonKey(fromJson: _historyUint16FromJson) final int? computeBudget,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      final BigInt? sequence,
+      final String? previousOutpointAddress,
+      @_StrictHistoryInt()
+      final int? previousOutpointAmount}) = _$ApiTxInputImpl;
 
   factory _ApiTxInput.fromJson(Map<String, dynamic> json) =
       _$ApiTxInputImpl.fromJson;
@@ -1546,6 +1572,9 @@ abstract class _ApiTxInput implements ApiTxInput {
   @override
   @JsonKey(fromJson: _historyUint16FromJson)
   int? get computeBudget;
+  @override
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  BigInt? get sequence;
   @override // new fields
   String? get previousOutpointAddress;
   @override
@@ -1571,6 +1600,11 @@ mixin _$ApiTxOutput {
   String get scriptPublicKey => throw _privateConstructorUsedError;
   String get scriptPublicKeyAddress => throw _privateConstructorUsedError;
   String get scriptPublicKeyType => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _historyUint16FromJson)
+  int? get scriptPublicKeyVersion => throw _privateConstructorUsedError;
+  String? get covenantId => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _historyUint16FromJson)
+  int? get covenantAuthorizingInput => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1590,7 +1624,11 @@ abstract class $ApiTxOutputCopyWith<$Res> {
       @_StrictHistoryInt() int amount,
       String scriptPublicKey,
       String scriptPublicKeyAddress,
-      String scriptPublicKeyType});
+      String scriptPublicKeyType,
+      @JsonKey(fromJson: _historyUint16FromJson) int? scriptPublicKeyVersion,
+      String? covenantId,
+      @JsonKey(fromJson: _historyUint16FromJson)
+      int? covenantAuthorizingInput});
 }
 
 /// @nodoc
@@ -1612,6 +1650,9 @@ class _$ApiTxOutputCopyWithImpl<$Res, $Val extends ApiTxOutput>
     Object? scriptPublicKey = null,
     Object? scriptPublicKeyAddress = null,
     Object? scriptPublicKeyType = null,
+    Object? scriptPublicKeyVersion = freezed,
+    Object? covenantId = freezed,
+    Object? covenantAuthorizingInput = freezed,
   }) {
     return _then(_value.copyWith(
       transactionId: null == transactionId
@@ -1638,6 +1679,18 @@ class _$ApiTxOutputCopyWithImpl<$Res, $Val extends ApiTxOutput>
           ? _value.scriptPublicKeyType
           : scriptPublicKeyType // ignore: cast_nullable_to_non_nullable
               as String,
+      scriptPublicKeyVersion: freezed == scriptPublicKeyVersion
+          ? _value.scriptPublicKeyVersion
+          : scriptPublicKeyVersion // ignore: cast_nullable_to_non_nullable
+              as int?,
+      covenantId: freezed == covenantId
+          ? _value.covenantId
+          : covenantId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      covenantAuthorizingInput: freezed == covenantAuthorizingInput
+          ? _value.covenantAuthorizingInput
+          : covenantAuthorizingInput // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -1656,7 +1709,11 @@ abstract class _$$ApiTxOutputImplCopyWith<$Res>
       @_StrictHistoryInt() int amount,
       String scriptPublicKey,
       String scriptPublicKeyAddress,
-      String scriptPublicKeyType});
+      String scriptPublicKeyType,
+      @JsonKey(fromJson: _historyUint16FromJson) int? scriptPublicKeyVersion,
+      String? covenantId,
+      @JsonKey(fromJson: _historyUint16FromJson)
+      int? covenantAuthorizingInput});
 }
 
 /// @nodoc
@@ -1676,6 +1733,9 @@ class __$$ApiTxOutputImplCopyWithImpl<$Res>
     Object? scriptPublicKey = null,
     Object? scriptPublicKeyAddress = null,
     Object? scriptPublicKeyType = null,
+    Object? scriptPublicKeyVersion = freezed,
+    Object? covenantId = freezed,
+    Object? covenantAuthorizingInput = freezed,
   }) {
     return _then(_$ApiTxOutputImpl(
       transactionId: null == transactionId
@@ -1702,6 +1762,18 @@ class __$$ApiTxOutputImplCopyWithImpl<$Res>
           ? _value.scriptPublicKeyType
           : scriptPublicKeyType // ignore: cast_nullable_to_non_nullable
               as String,
+      scriptPublicKeyVersion: freezed == scriptPublicKeyVersion
+          ? _value.scriptPublicKeyVersion
+          : scriptPublicKeyVersion // ignore: cast_nullable_to_non_nullable
+              as int?,
+      covenantId: freezed == covenantId
+          ? _value.covenantId
+          : covenantId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      covenantAuthorizingInput: freezed == covenantAuthorizingInput
+          ? _value.covenantAuthorizingInput
+          : covenantAuthorizingInput // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -1716,7 +1788,11 @@ class _$ApiTxOutputImpl implements _ApiTxOutput {
       @_StrictHistoryInt() required this.amount,
       required this.scriptPublicKey,
       required this.scriptPublicKeyAddress,
-      required this.scriptPublicKeyType});
+      required this.scriptPublicKeyType,
+      @JsonKey(fromJson: _historyUint16FromJson) this.scriptPublicKeyVersion,
+      this.covenantId,
+      @JsonKey(fromJson: _historyUint16FromJson)
+      this.covenantAuthorizingInput});
 
   factory _$ApiTxOutputImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApiTxOutputImplFromJson(json);
@@ -1735,10 +1811,18 @@ class _$ApiTxOutputImpl implements _ApiTxOutput {
   final String scriptPublicKeyAddress;
   @override
   final String scriptPublicKeyType;
+  @override
+  @JsonKey(fromJson: _historyUint16FromJson)
+  final int? scriptPublicKeyVersion;
+  @override
+  final String? covenantId;
+  @override
+  @JsonKey(fromJson: _historyUint16FromJson)
+  final int? covenantAuthorizingInput;
 
   @override
   String toString() {
-    return 'ApiTxOutput(transactionId: $transactionId, index: $index, amount: $amount, scriptPublicKey: $scriptPublicKey, scriptPublicKeyAddress: $scriptPublicKeyAddress, scriptPublicKeyType: $scriptPublicKeyType)';
+    return 'ApiTxOutput(transactionId: $transactionId, index: $index, amount: $amount, scriptPublicKey: $scriptPublicKey, scriptPublicKeyAddress: $scriptPublicKeyAddress, scriptPublicKeyType: $scriptPublicKeyType, scriptPublicKeyVersion: $scriptPublicKeyVersion, covenantId: $covenantId, covenantAuthorizingInput: $covenantAuthorizingInput)';
   }
 
   @override
@@ -1755,13 +1839,29 @@ class _$ApiTxOutputImpl implements _ApiTxOutput {
             (identical(other.scriptPublicKeyAddress, scriptPublicKeyAddress) ||
                 other.scriptPublicKeyAddress == scriptPublicKeyAddress) &&
             (identical(other.scriptPublicKeyType, scriptPublicKeyType) ||
-                other.scriptPublicKeyType == scriptPublicKeyType));
+                other.scriptPublicKeyType == scriptPublicKeyType) &&
+            (identical(other.scriptPublicKeyVersion, scriptPublicKeyVersion) ||
+                other.scriptPublicKeyVersion == scriptPublicKeyVersion) &&
+            (identical(other.covenantId, covenantId) ||
+                other.covenantId == covenantId) &&
+            (identical(
+                    other.covenantAuthorizingInput, covenantAuthorizingInput) ||
+                other.covenantAuthorizingInput == covenantAuthorizingInput));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, transactionId, index, amount,
-      scriptPublicKey, scriptPublicKeyAddress, scriptPublicKeyType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      transactionId,
+      index,
+      amount,
+      scriptPublicKey,
+      scriptPublicKeyAddress,
+      scriptPublicKeyType,
+      scriptPublicKeyVersion,
+      covenantId,
+      covenantAuthorizingInput);
 
   @JsonKey(ignore: true)
   @override
@@ -1784,7 +1884,12 @@ abstract class _ApiTxOutput implements ApiTxOutput {
       @_StrictHistoryInt() required final int amount,
       required final String scriptPublicKey,
       required final String scriptPublicKeyAddress,
-      required final String scriptPublicKeyType}) = _$ApiTxOutputImpl;
+      required final String scriptPublicKeyType,
+      @JsonKey(fromJson: _historyUint16FromJson)
+      final int? scriptPublicKeyVersion,
+      final String? covenantId,
+      @JsonKey(fromJson: _historyUint16FromJson)
+      final int? covenantAuthorizingInput}) = _$ApiTxOutputImpl;
 
   factory _ApiTxOutput.fromJson(Map<String, dynamic> json) =
       _$ApiTxOutputImpl.fromJson;
@@ -1804,6 +1909,14 @@ abstract class _ApiTxOutput implements ApiTxOutput {
   @override
   String get scriptPublicKeyType;
   @override
+  @JsonKey(fromJson: _historyUint16FromJson)
+  int? get scriptPublicKeyVersion;
+  @override
+  String? get covenantId;
+  @override
+  @JsonKey(fromJson: _historyUint16FromJson)
+  int? get covenantAuthorizingInput;
+  @override
   @JsonKey(ignore: true)
   _$$ApiTxOutputImplCopyWith<_$ApiTxOutputImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1819,6 +1932,10 @@ mixin _$ApiTransaction {
   @JsonKey(fromJson: _historyUint16FromJson)
   int? get version => throw _privateConstructorUsedError;
   String? get payload => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  BigInt? get lockTime => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  BigInt? get gas => throw _privateConstructorUsedError;
   String get transactionId => throw _privateConstructorUsedError;
   List<String> get blockHash => throw _privateConstructorUsedError;
   @_StrictHistoryInt()
@@ -1846,6 +1963,10 @@ abstract class $ApiTransactionCopyWith<$Res> {
       {String? subnetworkId,
       @JsonKey(fromJson: _historyUint16FromJson) int? version,
       String? payload,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      BigInt? lockTime,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      BigInt? gas,
       String transactionId,
       List<String> blockHash,
       @_StrictHistoryInt() int blockTime,
@@ -1872,6 +1993,8 @@ class _$ApiTransactionCopyWithImpl<$Res, $Val extends ApiTransaction>
     Object? subnetworkId = freezed,
     Object? version = freezed,
     Object? payload = freezed,
+    Object? lockTime = freezed,
+    Object? gas = freezed,
     Object? transactionId = null,
     Object? blockHash = null,
     Object? blockTime = null,
@@ -1894,6 +2017,14 @@ class _$ApiTransactionCopyWithImpl<$Res, $Val extends ApiTransaction>
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
               as String?,
+      lockTime: freezed == lockTime
+          ? _value.lockTime
+          : lockTime // ignore: cast_nullable_to_non_nullable
+              as BigInt?,
+      gas: freezed == gas
+          ? _value.gas
+          : gas // ignore: cast_nullable_to_non_nullable
+              as BigInt?,
       transactionId: null == transactionId
           ? _value.transactionId
           : transactionId // ignore: cast_nullable_to_non_nullable
@@ -1942,6 +2073,10 @@ abstract class _$$TransactionImplCopyWith<$Res>
       {String? subnetworkId,
       @JsonKey(fromJson: _historyUint16FromJson) int? version,
       String? payload,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      BigInt? lockTime,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      BigInt? gas,
       String transactionId,
       List<String> blockHash,
       @_StrictHistoryInt() int blockTime,
@@ -1966,6 +2101,8 @@ class __$$TransactionImplCopyWithImpl<$Res>
     Object? subnetworkId = freezed,
     Object? version = freezed,
     Object? payload = freezed,
+    Object? lockTime = freezed,
+    Object? gas = freezed,
     Object? transactionId = null,
     Object? blockHash = null,
     Object? blockTime = null,
@@ -1988,6 +2125,14 @@ class __$$TransactionImplCopyWithImpl<$Res>
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
               as String?,
+      lockTime: freezed == lockTime
+          ? _value.lockTime
+          : lockTime // ignore: cast_nullable_to_non_nullable
+              as BigInt?,
+      gas: freezed == gas
+          ? _value.gas
+          : gas // ignore: cast_nullable_to_non_nullable
+              as BigInt?,
       transactionId: null == transactionId
           ? _value.transactionId
           : transactionId // ignore: cast_nullable_to_non_nullable
@@ -2032,6 +2177,10 @@ class _$TransactionImpl extends _Transaction {
       {this.subnetworkId,
       @JsonKey(fromJson: _historyUint16FromJson) this.version,
       this.payload,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      this.lockTime,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      this.gas,
       required this.transactionId,
       final List<String> blockHash = const [],
       @_StrictHistoryInt() required this.blockTime,
@@ -2055,6 +2204,12 @@ class _$TransactionImpl extends _Transaction {
   final int? version;
   @override
   final String? payload;
+  @override
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  final BigInt? lockTime;
+  @override
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  final BigInt? gas;
   @override
   final String transactionId;
   final List<String> _blockHash;
@@ -2096,7 +2251,7 @@ class _$TransactionImpl extends _Transaction {
 
   @override
   String toString() {
-    return 'ApiTransaction(subnetworkId: $subnetworkId, version: $version, payload: $payload, transactionId: $transactionId, blockHash: $blockHash, blockTime: $blockTime, isAccepted: $isAccepted, acceptingBlockHash: $acceptingBlockHash, acceptingBlockBlueScore: $acceptingBlockBlueScore, inputs: $inputs, outputs: $outputs)';
+    return 'ApiTransaction(subnetworkId: $subnetworkId, version: $version, payload: $payload, lockTime: $lockTime, gas: $gas, transactionId: $transactionId, blockHash: $blockHash, blockTime: $blockTime, isAccepted: $isAccepted, acceptingBlockHash: $acceptingBlockHash, acceptingBlockBlueScore: $acceptingBlockBlueScore, inputs: $inputs, outputs: $outputs)';
   }
 
   @override
@@ -2108,6 +2263,9 @@ class _$TransactionImpl extends _Transaction {
                 other.subnetworkId == subnetworkId) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.payload, payload) || other.payload == payload) &&
+            (identical(other.lockTime, lockTime) ||
+                other.lockTime == lockTime) &&
+            (identical(other.gas, gas) || other.gas == gas) &&
             (identical(other.transactionId, transactionId) ||
                 other.transactionId == transactionId) &&
             const DeepCollectionEquality()
@@ -2132,6 +2290,8 @@ class _$TransactionImpl extends _Transaction {
       subnetworkId,
       version,
       payload,
+      lockTime,
+      gas,
       transactionId,
       const DeepCollectionEquality().hash(_blockHash),
       blockTime,
@@ -2160,6 +2320,10 @@ abstract class _Transaction extends ApiTransaction {
       {final String? subnetworkId,
       @JsonKey(fromJson: _historyUint16FromJson) final int? version,
       final String? payload,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      final BigInt? lockTime,
+      @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+      final BigInt? gas,
       required final String transactionId,
       final List<String> blockHash,
       @_StrictHistoryInt() required final int blockTime,
@@ -2180,6 +2344,12 @@ abstract class _Transaction extends ApiTransaction {
   int? get version;
   @override
   String? get payload;
+  @override
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  BigInt? get lockTime;
+  @override
+  @JsonKey(fromJson: _historyUint64FromJson, toJson: _historyUint64ToJson)
+  BigInt? get gas;
   @override
   String get transactionId;
   @override

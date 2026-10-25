@@ -58,6 +58,74 @@ void main() {
     expect(ApiTransaction.fromJson(absent).payload, isNull);
   });
 
+  test('real history retains output covenant bindings for cached verification',
+      () {
+    var bindings = 0;
+    for (final original in raw) {
+      final encoded = ApiTransaction.fromJson(original).toJson();
+      final before = (original['outputs'] as List).cast<Map>();
+      final after = (encoded['outputs'] as List).cast<Map>();
+      for (var i = 0; i < before.length; i++) {
+        if (before[i]['covenant_id'] == null) continue;
+        bindings++;
+        expect(after[i]['covenant_id'], before[i]['covenant_id']);
+        expect(after[i]['covenant_authorizing_input'],
+            before[i]['covenant_authorizing_input']);
+      }
+    }
+    expect(bindings, greaterThan(0));
+  });
+
+  test(
+      'identity metadata keeps present zero, nonzero and maximum uint64 exactly',
+      () {
+    for (final value in ['0', '17', '18446744073709551615']) {
+      final original =
+          jsonDecode(jsonEncode(raw.first)) as Map<String, dynamic>;
+      original['lock_time'] = value;
+      original['gas'] = value;
+      original['inputs'][0]['sequence'] = value;
+      original['outputs'][0]['script_public_key_version'] = 7;
+      final encoded = ApiTransaction.fromJson(original).toJson();
+      expect(encoded['lock_time'], value);
+      expect(encoded['gas'], value);
+      expect(encoded['inputs'][0]['sequence'], value);
+      expect(encoded['outputs'][0]['script_public_key_version'], 7);
+      expect(ApiTransaction.fromJson(encoded).toJson(), encoded);
+    }
+  });
+
+  test('optional identity integers preserve absence and reject inexact values',
+      () {
+    final base = jsonDecode(jsonEncode(raw.first)) as Map<String, dynamic>;
+    final input = Map<String, dynamic>.from(base['inputs'][0]);
+    final absent = ApiTransaction.fromJson(base).toJson();
+    expect(absent.containsKey('lock_time'), false);
+    expect(absent.containsKey('gas'), false);
+    expect((absent['inputs'][0] as Map).containsKey('sequence'), false);
+    for (final invalid in [
+      -1,
+      1.5,
+      true,
+      '01',
+      '+1',
+      ' 1',
+      '18446744073709551616',
+      9007199254740992
+    ]) {
+      for (final field in ['lock_time', 'gas']) {
+        expect(() => ApiTransaction.fromJson({...base, field: invalid}),
+            throwsFormatException);
+      }
+      expect(() => ApiTxInput.fromJson({...input, 'sequence': invalid}),
+          throwsFormatException);
+    }
+    final exact =
+        ApiTransaction.fromJson({...base, 'lock_time': 17, 'gas': 0}).toJson();
+    expect(exact['lock_time'], '17');
+    expect(exact['gas'], '0');
+  });
+
   test('RPC history preserves payload presence rather than protobuf defaults',
       () {
     expect(ApiTransaction.fromRpc(RpcTransaction(version: 1)).payload, isNull);
