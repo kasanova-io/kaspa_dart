@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-22T22:41:35.344000+00:00",
+  "url": "https://api-tn10.kaspa.org/transactions/fed7307a6316d4fe75c8b2ec5c5d7ac76aaa09665c40f13410a4884ec8733813?resolve_previous_outpoints=full",
+  "sha256": "a3243ff5fd0a68b6018003d17d880c9fe4e419172d9ca7606a90b7062edcffa2",
+  "transactionId": "fed7307a6316d4fe75c8b2ec5c5d7ac76aaa09665c40f13410a4884ec8733813",
+  "version": 1,
+  "inputFields": [
+    [
+      "transaction_id",
+      "index",
+      "previous_outpoint_hash",
+      "previous_outpoint_index",
+      "previous_outpoint_resolved",
+      "previous_outpoint_address",
+      "previous_outpoint_amount",
+      "signature_script",
+      "sig_op_count",
+      "compute_budget",
+      "covenant_id"
+    ],
+    [
+      "transaction_id",
+      "index",
+      "previous_outpoint_hash",
+      "previous_outpoint_index",
+      "previous_outpoint_resolved",
+      "previous_outpoint_address",
+      "previous_outpoint_amount",
+      "signature_script",
+      "sig_op_count",
+      "compute_budget",
+      "covenant_id"
+    ],
+    [
+      "transaction_id",
+      "index",
+      "previous_outpoint_hash",
+      "previous_outpoint_index",
+      "previous_outpoint_resolved",
+      "previous_outpoint_address",
+      "previous_outpoint_amount",
+      "signature_script",
+      "sig_op_count",
+      "compute_budget",
+      "covenant_id"
+    ]
+  ],
+  "inputNullFields": [
+    [
+      "sig_op_count"
+    ],
+    [
+      "sig_op_count"
+    ],
+    [
+      "sig_op_count",
+      "covenant_id"
+    ]
+  ],
+  "outputNullFields": [
+    [
+      "covenant_authorizing_input",
+      "covenant_id"
+    ],
+    [],
+    [
+      "covenant_authorizing_input",
+      "covenant_id"
+    ]
+  ],
+  "normalizedFixtureSha256": "646b6bed46a66f6062bc3dc0abc5dd80eedf40521b0e759ce0e192482b1dcece",
+  "scope": "Public confirmed DEV/TN10 purchase response, decoded through actual SDK production REST methods; no keys/seeds",
+  "capturedApiResourceConvention": "v1inputs sig_op_count=null; compute_budget encodedint; legacyabsence staysunknown"
+}

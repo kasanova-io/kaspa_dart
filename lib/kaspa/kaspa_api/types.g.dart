@@ -140,6 +140,7 @@ _$ApiTxInputImpl _$$ApiTxInputImplFromJson(Map json) => _$ApiTxInputImpl(
       signatureScript: json['signature_script'] as String,
       sigOpCount: _historySigOpCountFromJson(json['sig_op_count']),
       computeBudget: _historyUint16FromJson(json['compute_budget']),
+      sequence: _historyUint64FromJson(json['sequence']),
       previousOutpointAddress: json['previous_outpoint_address'] as String?,
       previousOutpointAmount: _$JsonConverterFromJson<Object, int>(
           json['previous_outpoint_amount'], const _StrictHistoryInt().fromJson),
@@ -162,6 +163,7 @@ Map<String, dynamic> _$$ApiTxInputImplToJson(_$ApiTxInputImpl instance) {
 
   writeNotNull('sig_op_count', instance.sigOpCount?.toString());
   writeNotNull('compute_budget', instance.computeBudget);
+  writeNotNull('sequence', _historyUint64ToJson(instance.sequence));
   writeNotNull('previous_outpoint_address', instance.previousOutpointAddress);
   writeNotNull(
       'previous_outpoint_amount',
@@ -177,21 +179,41 @@ _$ApiTxOutputImpl _$$ApiTxOutputImplFromJson(Map json) => _$ApiTxOutputImpl(
       scriptPublicKey: json['script_public_key'] as String,
       scriptPublicKeyAddress: json['script_public_key_address'] as String,
       scriptPublicKeyType: json['script_public_key_type'] as String,
+      scriptPublicKeyVersion:
+          _historyUint16FromJson(json['script_public_key_version']),
+      covenantId: json['covenant_id'] as String?,
+      covenantAuthorizingInput:
+          _historyUint16FromJson(json['covenant_authorizing_input']),
     );
 
-Map<String, dynamic> _$$ApiTxOutputImplToJson(_$ApiTxOutputImpl instance) =>
-    <String, dynamic>{
-      'transaction_id': instance.transactionId,
-      'index': const _StrictHistoryInt().toJson(instance.index),
-      'amount': const _StrictHistoryInt().toJson(instance.amount),
-      'script_public_key': instance.scriptPublicKey,
-      'script_public_key_address': instance.scriptPublicKeyAddress,
-      'script_public_key_type': instance.scriptPublicKeyType,
-    };
+Map<String, dynamic> _$$ApiTxOutputImplToJson(_$ApiTxOutputImpl instance) {
+  final val = <String, dynamic>{
+    'transaction_id': instance.transactionId,
+    'index': const _StrictHistoryInt().toJson(instance.index),
+    'amount': const _StrictHistoryInt().toJson(instance.amount),
+    'script_public_key': instance.scriptPublicKey,
+    'script_public_key_address': instance.scriptPublicKeyAddress,
+    'script_public_key_type': instance.scriptPublicKeyType,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('script_public_key_version', instance.scriptPublicKeyVersion);
+  writeNotNull('covenant_id', instance.covenantId);
+  writeNotNull('covenant_authorizing_input', instance.covenantAuthorizingInput);
+  return val;
+}
 
 _$TransactionImpl _$$TransactionImplFromJson(Map json) => _$TransactionImpl(
       subnetworkId: json['subnetwork_id'] as String?,
       version: _historyUint16FromJson(json['version']),
+      payload: json['payload'] as String?,
+      lockTime: _historyUint64FromJson(json['lock_time']),
+      gas: _historyUint64FromJson(json['gas']),
       transactionId: json['transaction_id'] as String,
       blockHash: (json['block_hash'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -227,6 +249,9 @@ Map<String, dynamic> _$$TransactionImplToJson(_$TransactionImpl instance) {
 
   writeNotNull('subnetwork_id', instance.subnetworkId);
   writeNotNull('version', instance.version);
+  writeNotNull('payload', instance.payload);
+  writeNotNull('lock_time', _historyUint64ToJson(instance.lockTime));
+  writeNotNull('gas', _historyUint64ToJson(instance.gas));
   val['transaction_id'] = instance.transactionId;
   val['block_hash'] = instance.blockHash;
   val['block_time'] = const _StrictHistoryInt().toJson(instance.blockTime);
